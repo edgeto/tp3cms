@@ -1,0 +1,35 @@
+<footer>
+    <div class="container-fluid footer_top_bg">
+        <div class="row about text-center">
+            <foreach name="footer_nav" item="vo" key="k">    
+                <a href="{$vo.url}">{$vo.name}</a>
+                <if condition="$k neq (count($footer_nav)-1) ">
+                    /
+                </if>
+            </foreach>
+
+        </div>
+        <div class="container friends">
+            <a>友情链接：</a>
+            <foreach name="friendly" item="vo" key="k">    
+                <a href="{$vo.url}" target="_blank">{$vo.name}</a>
+            </foreach>
+        </div>
+    </div>
+    <div class="foot-bottom">
+        <div class="container text-center">
+            <!-- <div class="row">
+                <img src="__IMG__/footer-logo.png"/>
+            </div> -->
+            <div class="row copyright">
+                <foreach name="copyright_nav" item="vo" > 
+                    <p>
+                        <a href="{$vo.url}">
+                        {$vo.name}
+                        </a>
+                    </p>
+                </foreach>
+            </div>
+        </div>
+    </div>
+</footer>

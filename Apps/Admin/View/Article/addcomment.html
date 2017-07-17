@@ -1,0 +1,55 @@
+<div class="Item hr">
+    <div class="current">添加评论</div>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">文章ID：</th>
+            <td>{$data['id']}</td>
+            <input type="hidden" id="article_id" name="article_id" value="{$data['id']}"/>
+        </tr>
+        <tr>
+            <th width="100">文章标题：</th>
+            <td>{$data['title']}</td>
+        </tr>
+        <!--<tr>
+            <th width="100">内容：</th>
+            &lt;!&ndash; 加载编辑器的容器 &ndash;&gt;
+            <script id="ueditor" name="content" type="text/plain">
+
+            </script>
+            &lt;!&ndash; 配置文件 &ndash;&gt;
+            <script src="__STATIC__/ueditor/ueditor.config.js"></script>
+            &lt;!&ndash; 编辑器源码文件 &ndash;&gt;
+            <script src="__STATIC__/ueditor/ueditor.all.js"></script>
+            &lt;!&ndash; 实例化编辑器 &ndash;&gt;
+            <script type="text/javascript">
+                var ue = UE.getEditor('ueditor',{initialFrameWidth:800,initialFrameHeight :500});
+            </script>
+        </tr>-->
+        <tr>
+            <th width="100">内容：</th>
+            <td>
+                <textarea class="jq_watermark" rows = "5" cols="68" name="content" placeholder="内容"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">状态：</th>
+            <td>
+                <select name="status">
+                    <option value="0">启用</option>
+                    <option value="1" selected>禁用</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">排序：</th>
+            <td>
+                <input id="sort" type="text" class="input" size="30" name="sort" placeholder="请输入数字" value="0"/>（数字）
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

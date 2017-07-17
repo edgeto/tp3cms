@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{:C('SITE_TITLE')} - 后台管理系统</title>
+    <!--<link rel="stylesheet" type="text/css" href="__STATIC__/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="__CSS__/base.css">
+    <link rel="stylesheet" type="text/css" href="__CSS__/layout.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/asyncbox/skins/default.css">
+    <!--<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>-->
+    <script src="__STATIC__/jquery/jquery-3.1.0.min.js"></script>
+    <script src="__STATIC__/jquery/jquery.lazyload.js"></script>
+    <script src="__JS__/functions.js"></script>
+    <script src="__JS__/base.js"></script>
+    <script src="__STATIC__/jquery/jquery.form.js"></script>
+    <script src="__STATIC__/asyncbox/asyncbox.js"></script>
+    <script src="__STATIC__/jquery/jquery.watermark.js"></script>
+    <script src="__STATIC__/datepicker/datetimepicker_css.js"></script>
+    <script src="__STATIC__/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+        $(window).resize(autoSize);
+        $(function(){
+            autoSize();
+            $(".loginOut").click(function(){
+                var url=$(this).attr("href");
+                popup.confirm('你确定要退出吗？','你确定要退出吗',function(action){
+                    if(action == 'ok'){ window.location=url; }
+                });
+                return false;
+            });
+            var time=self.setInterval(function(){$("#today").html(date("Y-m-d H:i:s"));},1000);
+        });
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <!-- header -->
+    <include file="Public/header" />
+    <!-- main -->
+    <div class="mainBody">
+        <!-- left -->
+        <include file="Public/left" />
+        <!-- right -->
+        <div id="Right">
+            {__CONTENT__}
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!-- footer -->
+    <include file="Public/footer" />
+</div>
+</body>
+</html>

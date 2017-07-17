@@ -1,0 +1,83 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="style">
+    <link href="__CSS__/login.css" rel="stylesheet">
+</block>
+<block name="header">
+   <header>
+     <div class="container-fluid toolbar-bg">
+         <div class="container toolbar">
+             <nav class="navbar">
+                 <a class="collect"><img alt="Brand" src="__IMG__/star.svg">收藏本站</a>
+                 <div class="container-fluid">
+                     <ul class="nav navbar-nav">
+                         <foreach name="main_nav" item="vo" >
+                             <li><a href="{$vo.url}" target="_blank">{$vo.name}</a></li>
+                         </foreach>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right">
+                         <li><a class="webtips">你好，欢迎来到衍生网</a></li>
+                         <li><a class="weblogin" href="{:C('DEFAULT_URL.USER')}/public/login.html">[登录]</a></li>
+                         <li><a href="{:C('DEFAULT_URL.USER')}/public/register.html">[注册]</a></li>
+                     </ul>
+                 </div><!-- /.container-fluid -->
+             </nav>
+         </div>
+     </div>
+   </header>
+</block>
+<block name="main">
+    <div class="container-fluid main" ng-app="Login" ng-controller="LoginCate">
+        <div class="container">
+            <div class="row main-box">
+                <!--<img src="https://image2.wbiao.co/others/up/201607/13/146837477020625.jpg">-->
+                <div class="login">
+                    <p class="p">会员登陆 <a class="pull-right to-register" href="register" id="doRegister">立即注册</a></p>
+                    <form class="form-horizontal" action="" method="post">
+                        <div class="login-box">
+                            <em class="ico"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></em>
+                            <input type="text" name="username" class="form-control text" placeholder="手机号/邮箱/用户名">
+                        </div>
+                        <div class="login-box">
+                            <em class="ico"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></em>
+                            <input type="password" name="password" class="form-control text" placeholder="密码">
+                            <input type="hidden" id="referer_url" name="referer_url" value="{$Think.get.referer_url}">
+                        </div>
+                        <div class="login-box">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">自动登陆
+                                </label>
+                                <label>
+                                    <input type="checkbox" checked>记住用户名
+                                </label>
+                                <label class="pull-right">
+                                   <a class="forget">忘记密码</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="login-box">
+                            <button type="submit" class="btn btn-block btn-primary">立即登陆</button>
+                        </div>
+                        <div class="login-box">
+                            <label class="t3">使用合作网站登录：</label>
+                            <p class="c3">
+                                <a class="qq" href="">QQ</a><span>|</span>
+                                <a class="sina" href="">新浪微博</a><span>|</span>
+                                <a class="weixin" href="">微信</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="footer">
+    <include file="Public/footer" />
+</block>
+<block name="script">
+    <script src="__STATIC__/angular/angular.min.js"></script>
+    <script src="__JS__/user.js"></script>
+</block>

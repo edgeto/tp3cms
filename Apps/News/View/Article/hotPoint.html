@@ -1,0 +1,72 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+	<!-- 资讯 -->
+    <div class="main container-fluid">
+        <div class="container news-list">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="title"><a>全部</a></h4>
+                    <volist name="list" id="vo">
+                        <a class="media" href="/article/detail/{$vo.id}.html">
+                            <div class="media-left">
+                                <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                                    <img class="media-object" src="{$vo.img}" alt="{$vo.title}"/>
+                                <else /> 
+                                    <img src="__UPLOAD__{$vo.img}" class="media-object" alt="{$vo.title}" />
+                                </if>
+                            </div>
+                            <div class="media-body">
+                                <h3>{$vo.title}</h3>
+                                <p class="time">{$vo.add_time|date="Y-m-d H:i:s",###} 访问量 : {$vo.view}</p>
+                                <p>{$vo.abstract}</p>
+                            </div>
+                        </a>
+                    </volist>
+                    <div class="page">
+                        {$page}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <section class="col-md-12">
+                        <h4 class="title">
+                            <a>本周热点</a>
+                        </h4>
+                        <div class="col-md-12 hot-list">
+                           <volist name="hot_list" id="vo" key="k">
+                                <h5 class="new_h">
+                                    <a href="/article/detail/id/{$vo.id}.html">{$k}、{$vo.title}</a>
+                                </h5>
+                            </volist>
+                        </div>
+                    </section>
+                    <section class="col-md-12">
+                        <h4 class="title">
+                            <a>本周推荐</a>
+                        </h4>
+                        <div class="col-md-12 hot-list">
+                            <volist name="week_list" id="vo">
+                                <a class="media" href="/article/detail/id/{$vo.id}.html">
+                                    <div class="media-left">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                                            <img class="media-object" src="{$vo.img}" alt="{$vo.title}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="media-object" alt="{$vo.title}" />
+                                        </if>
+                                    </div>
+                                    <div class="media-body">
+                                        <p>{$vo.title}</p>
+                                    </div>
+                                </a>
+                            </volist>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__JS__/base.js"></script>
+</block>

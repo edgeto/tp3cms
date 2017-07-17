@@ -1,0 +1,136 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="main container-fluid">
+        <div class="container detail">
+            <div class="row">
+                <div class="col-md-7">
+                    <h4 class="title breadcrumbs">
+                        <foreach name="breadcrumbs" item="vo" key="k">    
+                            <a href="{$vo.url}" title="{$vo.name}">{$vo.name} </a>
+                            <if condition="$k neq (count($breadcrumbs)-1)">
+                                >
+                            </if>
+                        </foreach>
+                    </h4>
+                    <h3 class="text-center video-title">
+                        {$data.title}
+                    </h3>
+                    <div class="text-center info">
+                        时间：{$data.add_time|date="Y-m-d",###} 
+                        <notempty name="data.from_name">来源：{$data.from_name}</notempty>  
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                    </div>
+                    <p class="abstract">
+                        摘要：{$data.abstract}
+                    </p>
+                    <div class="content">
+                        <video controls>
+                            <if condition="(substr($data['url'],0,4) eq 'http') OR (substr($data['url'],0,5) eq 'https') ">
+                                <source src="{$data.url}" type="video/mp4">
+                            <else /> 
+                                <source src="__UPLOAD__{$data.url}" type="video/mp4">
+                            </if>
+                            您的浏览器不支持 video 标签。
+                        </video>
+                    </div>
+                    <div class="collect text-right">
+                        <input type="hidden" id="video_id" name="video_id" value="{$data.id}" />
+                        <empty name="collect">
+                            <span class="glyphicon glyphicon-heart" ng-click="collect({$data.id})"></span>
+                        <else /> 
+                            <span class="glyphicon glyphicon-heart in" ng-click="collect({$data.id})"></span>
+                        </empty> 
+                    </div> 
+                    <div class="statement">
+                        <p>免责声明: </p>
+                        <p>
+                            1、本站部分内容来源自网络，图片版权属于原作者，本站转载仅供大家学习和交流，切勿用于任何商业活动。
+                        </p>  
+                        <p>
+                            2、本站不承担用户因使用这些资源对自己和他人造成任何形式的损失或伤害。
+                        </p>  
+                        <p>
+                            3、本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
+                        </p>
+                        <p>
+                            4、如果侵害了您的合法权益，请您及时与我们,我们会在第一时间删除相关内容!
+                        </p>
+                        <p>
+                            5、联系方式： edgeto@163.com
+                        </p>
+                    </div>
+                    <div class="post_comment">
+                        <h4 class="title">
+                            <a>评论</a>
+                            <span class="label">&nbsp;请先登陆后评论，文明上网理性发言，请遵守新闻评论服务协议</span>
+                        </h4>
+                        <textarea class="form-control commentContent" rows="3">
+                        </textarea>
+                        <button type="button" class="btn btn-primary doComment" ng-click="doComment()">评论</button>
+                    </div>
+
+                    <div class="comment-list h">
+                        <h4 class="title">
+                            <a>全部评论</a>
+                        </h4>
+                        <a class="media" href="" ng-repeat = "x in commentList">
+                            <div class="media-left">
+                                <img class="img-circle" src="__UPLOAD__/<{x.headimgurl}>" alt="...">
+                            </div>
+                            <div class="media-body">
+                                <p><{x.nickname}>  <span class="time"><{x.add_time*1000|date:'yyyy-MM-dd HH:mm'}></span></p>
+                                <p><{x.content}></p>
+                            </div>
+                        </a>
+                        <button type="button" class="btn btn-primary btn-lg btn-block moreComment h" ng-click="moreComment()">更多评论</button>
+                    </div>
+
+                </div>
+                <div class="col-md-5 right">
+                    <h4 class="title">猜你喜欢</h4>
+                    <div class="row">
+                        <volist name="about" id="vo">
+                            <div class="col-md-6 item">
+                                <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img src="{$vo.img}" alt="{$vo.title}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                    </if>
+                                    <div class="caption">
+                                        <h5>{$vo.title}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                    <h4 class="title">相关推荐</h4>
+                    <div class="row">
+                        <volist name="about" id="vo">
+                            <div class="col-md-6 item">
+                                <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img src="{$vo.img}" alt="{$vo.title}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                    </if>           
+                                    <div class="caption">
+                                        <h5>{$vo.title}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__STATIC__/angular/angular.min.js"></script>
+    <script src="__JS__/v.js"></script>
+    <!-- 百度分享 -->
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+</block>

@@ -1,0 +1,36 @@
+<div class="Item hr">
+    <div class="current">登陆日志列表</div>
+</div>
+<form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>用户名</td>
+            <td>登陆时间</td>
+            <td>登陆IP</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>
+                    {$vo['username']}
+                </td>
+                <td>
+                    {$vo['login_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['login_ip']}
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+<div class="page">
+    {$page}
+</div>
+
+

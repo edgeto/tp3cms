@@ -1,0 +1,106 @@
+<div class="Item hr">
+    <span class="fr">系统现有资源<b>{$count}</b>个</span>
+    <div class="current">资源列表</div>
+</div>
+<form action="" method="get">
+    <!-- 搜索 -->
+    <label for="name">名称：</label>
+    <label>
+        <input id="name" type="text" class="input" size="20" name="name" placeholder="请输入名称" value="{$map['name']}"/>
+    </label>
+    <label for="controller">控制器：</label>
+    <label>
+        <input id="controller" type="text" class="input" size="20" name="controller" placeholder="请输入控制器" value="{$map['controller']}"/>
+    </label>
+    <label for="action">动作：</label>
+    <label>
+        <input id="action" type="text" class="input" size="20" name="action" placeholder="请输入动作" value="{$map['action']}"/>
+    </label>
+    <label for="route">路由：</label>
+    <label>
+        <input id="route" type="text" class="input" size="20" name="route" placeholder="请输入路由" value="{$map['route']}"/>
+    </label>
+    <button class="btn submit">搜索</button>
+    <a class="btn" href="{:U()}">清空</a>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td class="td_30">ID</td>
+            <td>名称</td>
+            <td>控制器</td>
+            <td>动作</td>
+            <td>路由</td>
+            <td>父资源</td>
+            <td>显示在导航</td>
+            <td>导航名称</td>
+            <td>导航显示排序</td>
+            <td>添加时间</td>
+            <td>修改时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['name']}</td>
+                <td>{$vo['controller']}</td>
+                <td>{$vo['action']}</td>
+                <td>{$vo['route']}</td>
+                <td>{$vo['pid']|get_resource_name}</td>
+                <td>
+                    <if condition="$vo['show_nav'] eq 0 ">
+                        不显示
+                        <else />
+                        显示
+                    </if>
+                </td>
+                <td>{$vo['nav_name']}</td>
+                <td>{$vo['show_order']}</td>
+                <td>
+                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>[ <a href="{:U('resource/edit', array('id' => $vo['id']))}">编辑</a> ] [ <a href="javascript:void(0);" value="{:U('resource/delete', array('id' => $vo['id']))}" name="{$vo['name']}" class="del">删除</a> ]</td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

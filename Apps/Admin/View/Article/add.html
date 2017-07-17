@@ -1,0 +1,180 @@
+<div class="Item hr">
+    <div class="current">添加文章</div>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    <ul class="tabs">
+        <li class="active" tabs-content="base" style="width:25%">基本设置</li>
+        <li tabs-content="pc" style="width:25%">PC站设置</li>
+        <li tabs-content="m" style="width:25%">M站设置</li>
+        <li tabs-content="other" style="width:25%">其他设置</li>
+    </ul>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1 tabs-content">
+        <tbody class="tabs-content h" id="base">
+            <tr>
+                <th width="100">文章标题：</th>
+                <td><input id="title" type="text" class="input" size="30" name="title" placeholder="请输入文章标题"/>（不能包含特殊字符）</td>
+            </tr>
+            <tr>
+                <th width="100">分类：</th>
+                <td>
+                    <select name="category_id" id="category_id">
+                        <option value='0'>请选择</option>
+                        <volist  name="article_category" id="vo">
+                            <option value="{$vo['id']}">{$vo.name}</option>
+                        </volist>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">主图：</th>
+                <td><input id="img" type="file" class="input" size="30" name="img" placeholder="请选择图片"/>（不能包含特殊字符）</td>
+            </tr>
+            <tr>
+                <th width="100">图片url：</th>
+                <td>
+                    <input id="pimg" type="text" class="input" size="30" name="img" placeholder="请填写图片url"/>（有图片url，则不用上传图片）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">文章摘要：</th>
+                <td>
+                    <input id="abstract" type="text" class="input" size="30" name="abstract" placeholder="请输入文章摘要"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">文章关键词：</th>
+                <td>
+                    <input id="keyword" type="text" class="input" size="30" name="keyword" placeholder="请输入文章关键词"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">文章描述：</th>
+                <td>
+                    <input id="desc" type="text" class="input" size="30" name="desc" placeholder="请输入文章描述"/>（不能包含特殊字符）
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="tabs-content h" id="other">
+            <tr>
+                <th width="100">微信链接：</th>
+                <td>
+                    <input id="weixin" type="text" class="input" size="30" name="weixin" placeholder="请输入微信链接"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">微店链接：</th>
+                <td>
+                    <input id="weidian" type="text" class="input" size="30" name="weidian" placeholder="请输入微店链接"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">淘宝链接：</th>
+                <td>
+                    <input id="taobao" type="text" class="input" size="30" name="taobao" placeholder="请输入淘宝链接"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">状态：</th>
+                <td>
+                    <select name="status">
+                        <option value="0">启用</option>
+                        <option value="1" selected>禁用</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">排序：</th>
+                <td>
+                    <input id="sort" type="text" class="input" size="30" name="sort" placeholder="请输入数字" value="0"/>（数字）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">是否首页：</th>
+                <td>
+                    <select name="is_index">
+                        <option value="1">是</option>
+                        <option value="0" selected>否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">是否推荐：</th>
+                <td>
+                    <select name="is_recompend">
+                        <option value="1">是</option>
+                        <option value="0" selected>否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">查看次数：</th>
+                <td>
+                    <input id="view" type="text" class="input" size="30" name="view" placeholder="请输入数字" value="0"/>（数字）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">来源</th>
+                <td>
+                    <select name="from" id="from">
+                        <option value='0'>请选择</option>
+                        <volist  name="infofrom_list" id="vo" key='k'>
+                            <option value="{$k}">{$vo}</option>
+                        </volist>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+        <tbody class="tabs-content h" id="pc">
+            <tr>
+                <th width="100">PC：</th>
+                <td>
+                    <select name="is_pc">
+                        <option value="1" selected>是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">文章内容：</th>
+                <!-- 加载编辑器的容器 -->
+                <script id="ueditor" name="content" type="text/plain">
+
+                </script>
+                <!-- 配置文件 -->
+                <script src="__STATIC__/ueditor/ueditor.config.js"></script>
+                <!-- 编辑器源码文件 -->
+                <!--<script src="__STATIC__/ueditor/ueditor.all.min.js"></script>-->
+                <script src="http://apps.bdimg.com/libs/ueditor/1.4.3.1/ueditor.all.js"></script>
+                <!-- 实例化编辑器 -->
+                <script type="text/javascript">
+                    var ue = UE.getEditor('ueditor',{initialFrameWidth:800,initialFrameHeight :500});
+                </script>
+            </tr>
+        </tbody>
+        <tbody class="tabs-content h" id="m">
+            <tr>
+                <th width="100">WAP：</th>
+                <td>
+                    <select name="is_wap">
+                        <option value="1" selected>是</option>
+                        <option value="0">否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th width="100">M站文章内容：</th>
+                <!-- 加载编辑器的容器 -->
+                <script id="m_ueditor" name="m_content" type="text/plain">
+
+                </script>
+                <!-- 实例化编辑器 -->
+                <script type="text/javascript">
+                    var m_ue = UE.getEditor('m_ueditor',{initialFrameWidth:800,initialFrameHeight :500});
+                </script>
+            </tr>
+        </tbody>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

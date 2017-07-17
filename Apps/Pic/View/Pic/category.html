@@ -1,0 +1,76 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="main container-fluid">
+        <div class="container pic-list">
+            <!-- <h4 class="title">
+                <a>首页</a> &gt; <a>资讯</a> &gt; <a>焦点资讯</a>
+            </h4> -->
+            <section>
+                <!-- <div class="list-title">
+                    <img src="__IMG__/goddess.png" class="img-responsive">
+                    <h1>推荐图片</h1>
+                </div> -->
+                <div class="row more">
+                    <div class="page">
+                        {$page}
+                    </div>
+                    <volist name="list" id="vo">
+                        <section class="col-md-3">
+                            <a href="/pic/detail/id/{$vo.id}.html" target="_blank" title="{$vo.name}">
+                                <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                                    <img class="img-responsive" src="__IMG__/grey.gif" data-original="{$vo.img}?v={$vo.v_no}" alt="{$vo.name}"/>
+                                <else /> 
+                                    <img src="__IMG__/grey.gif" data-original="__UPLOAD__{$vo.img}?v={$vo.v_no}" class="img-responsive" alt="{$vo.name}" />
+                                </if>
+                                <div class="caption">
+                                    <h5 class="text-ellipsis">{$vo.name}</h5>
+                                </div>
+                            </a>
+                            <p class="text-muted">
+                                <span class="glyphicon glyphicon-time"></span>
+                                <span class="add_time">{$vo.add_time|date="Y-m-d",###}</span>
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="view">{$vo.view}</span>
+                            </p>
+                        </section>
+                    </volist>
+                    <!-- <div class="page">
+                        {$page}
+                    </div> -->
+                </div>
+            </section>
+            <section>
+                <div class="list-title">
+                    <!-- <img src="__IMG__/goddess.png" class="img-responsive"> -->
+                    <h1>推荐图片</h1>
+                </div>
+                <div class="row more">
+                    <volist name="recompend_list" id="vo">
+                        <section class="col-md-3">
+                            <a href="/pic/detail/id/{$vo.id}.html" target="_blank">
+                                <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                                    <img class="img-responsive" src="__IMG__/grey.gif" data-original="{$vo.img}?v={$vo.v_no}" alt="{$vo.name}"/>
+                                <else /> 
+                                    <img src="__IMG__/grey.gif" data-original="__UPLOAD__{$vo.img}?v={$vo.v_no}" class="img-responsive" alt="{$vo.name}" />
+                                </if>
+                                <div class="caption">
+                                    <h5 class="text-ellipsis">{$vo.name}</h5>
+                                </div>
+                            </a>
+                            <p class="text-muted">
+                                <span class="glyphicon glyphicon-time"></span>2016/08/08
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-eye-open"></span>1.6万
+                            </p>
+                        </section>
+                    </volist>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__JS__/pic.js"></script>
+</block>

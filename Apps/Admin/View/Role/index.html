@@ -1,0 +1,83 @@
+<div class="Item hr">
+    <span class="fr">系统现有角色<b>{$count}</b>个</span>
+    <div class="current">角色列表</div>
+</div>
+<form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td class="td_30">ID</td>
+            <td>名称</td>
+            <td>父角色</td>
+            <td>超级分组</td>
+            <td>添加时间</td>
+            <td>修改时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['name']}</td>
+                <td>{$vo['pid']|get_role_name}</td>
+                <td>
+                    <if condition="$vo['is_super'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    <if condition="$vo['is_super'] eq 0 ">
+                    [ <a href="{:U('role/edit', array('id' => $vo['id']))}">编辑</a> ]
+                    [ <a href="javascript:void(0);" value="{:U('role/delete', array('id' => $vo['id']))}" name="{$vo['name']}" class="del">删除</a> ]
+                    [ <a href="{:U('role/assignAccess', array('id' => $vo['id']))}">分配权限</a> ]
+                    </if>
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

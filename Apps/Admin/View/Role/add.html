@@ -1,0 +1,43 @@
+<div class="Item hr">
+    <div class="current">添加角色</div>
+</div>
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">名称：</th>
+            <td><input id="name" type="text" class="input" size="30" name="name" placeholder="请输入名称"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">父角色：</th>
+            <td>
+                <select name="pid" id="pid">
+                    <option value='0'>请选择</option>
+                    <foreach  name="list" item="vo"  key="k">
+                        <option value="{$k}">{$vo}</option>
+                    </foreach>
+                </select>
+            </td>
+        </tr>
+        <notempty name="is_super">
+            <tr>
+                <th width="100">是否是超级分组：</th>
+                <td>
+                    <input type="radio" name="is_super" value='0' class="tbl_type" checked='checked'> 不是
+                    <input type="radio" name="is_super" value='1' class="tbl_type"> 是
+                </td>
+            </tr>
+        </notempty>
+        <tr>
+            <th width="100">状态：</th>
+            <td>
+                <select name="status">
+                    <option value="0" selected>启用</option>
+                    <option value="1">禁用</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

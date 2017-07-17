@@ -1,0 +1,73 @@
+<div class="Item hr">
+    <div class="current">添加文章图片</div>
+</div>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<form action="" method="post" enctype="multipart/form-data" ng-app="PicImg" ng-controller="MyPicImg">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <thead>
+            <tr>
+                <th width="100">属于：</th>
+                <td width="200">{$data['title']}</td>
+                <input type="hidden" id="id" name="id" value="{$data['id']}"/>
+                <td>[ <a href="javascript:void(0);" ng-click="addimg()">添加一张图片</a> ]</td>
+            </tr>
+        </thead>
+        <tbody ng-repeat="x in imgNum">
+            <tr>
+                <th width="100" style="color:red;font-weight:800;">图片-<{x}>：</th>
+                <td>
+                    <input id="url" type="file" class="input" size="30" name="url[]" placeholder="请选择图片"/>
+                </td>
+                <tr>
+            </tr>
+            <tr>
+                <th width="100">图片-<{x}>url：</th>
+                <td>
+                    <input id="picImg" type="text" class="input" size="30" name="url[]" placeholder="请填写图片url"/>（有图片url，则不用上传图片）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">名称-<{x}>：</th>
+                <td>
+                    <input id="name" type="text" class="input" size="30" name="name[]" placeholder="请填写名称"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">描述-<{x}>：</th>
+                <td>
+                    <input id="desc" type="text" class="input" size="30" name="desc[]" placeholder="请填写描述"/>（不能包含特殊字符）
+                </td>
+            </tr>
+            <tr>
+                <th width="100">排序-<{x}>：</th>
+                <td>
+                    <input id="sort" type="text" class="input" size="30" name="sort[]" placeholder="请填写排序" value="0"/>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th width="100"></th>
+                <td>[ <a href="javascript:void(0);" ng-click="addimg()">添加一张图片</a> ]</td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>
+<script>
+    var PicImg = angular.module('PicImg', []);
+    PicImg.config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('<{');
+        $interpolateProvider.endSymbol('}>');
+    });
+    PicImg.controller('MyPicImg', function($scope) {
+        $scope.imgNum = [1];
+        var length = $scope.imgNum.length;
+        $scope.addimg = function(){
+            length++;
+            $scope.imgNum.push(length);
+        };
+    });
+</script>

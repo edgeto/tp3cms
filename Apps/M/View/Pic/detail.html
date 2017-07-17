@@ -1,0 +1,108 @@
+<extend name="Public:base" />
+<block name='ng'>PicDetail</block>
+<block name="description"><meta name="description" content="{$data['desc']}"></block>
+<block name="keywords"><meta name="keywords" content="{$data['keywords']}"></block>
+<block name="frame">
+    <!-- m站框架 -->
+    <script id="app.html" type="text/ng-template">
+        <ion-side-menus>
+            <ion-side-menu-content>
+                <ion-nav-bar>
+                    <ion-nav-back-button >
+                    </ion-nav-back-button>
+                </ion-nav-bar>
+                <!-- 在这里加上tab -->
+                <ion-nav-view name="detail"></ion-nav-view>
+            </ion-side-menu-content>
+        </ion-side-menus>
+    </script>
+</block>
+<block name="main">
+    <!-- m站相册详情页 -->
+    <script id="detail.html" type="text/ng-template">
+        <ion-view title="{$data['name']}" hide-tabs>
+            <ion-nav-buttons side="left" >
+                <button ng-click="goIndex()" ng-hide="indexBtn" class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;首页
+                </button>
+            </ion-nav-buttons>
+            <ion-content class="ion-content">
+                <div class="list card">
+                    <!-- 作者信息还没有 -->
+                    <div class="item item-avatar">
+                        <img src="__STATIC__/img/man.jpg">
+                        <h2>name</h2>
+                        <p>2016-07-15 16：00</p>
+                    </div>
+                    <div class="statement">
+                        <p>免责声明: </p>
+                        <p>
+                            1、本站部分内容来源自网络，图片版权属于原作者，本站转载仅供大家学习和交流，切勿用于任何商业活动。
+                        </p>  
+                        <p>
+                            2、本站不承担用户因使用这些资源对自己和他人造成任何形式的损失或伤害。
+                        </p>  
+                        <p>
+                            3、本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
+                        </p>
+                        <p>
+                            4、如果侵害了您的合法权益，请您及时与我们,我们会在第一时间删除相关内容!
+                        </p>
+                        <p>
+                            5、联系方式： edgeto@163.com
+                        </p>
+                    </div>
+                    <div class="item item-body">
+                       <notempty name="picImg">
+                           <volist name="picImg" id="img">
+                               <img class="full-image" src="{$qd_url}/{$img['url']}" on-hold="goTodown('{$qd_url}/{$img['url']}')" />
+                           </volist>
+                        </notempty>
+                        <p class="p-res">
+                            <a href="#" class="subdued">1 <i class="icon ion-heart"></i></a>
+                            <a href="#" class="subdued">5 <i class="icon ion-eye"></i></a>
+                        </p>
+                    </div>
+                    <!-- 其他相关推荐 -->
+                    <notempty name="others">
+                        <volist name="others" id="p">
+                            <section class="container padding-top">
+                                <a  href="/pic/detail/id/{$p['id']}.html">
+                                    <h5>{$p['name']}</h5>
+                                    <div class="row row-wrap">
+                                        <volist name="p.picImg" id="picImg">
+                                            <div class="col">
+                                                <img class="full-image" src="{$qd_url}/{$picImg['url']}" >
+                                            </div>
+                                        </volist>
+                                    </div>
+                                </a>
+                            </section>
+                        </volist>
+                    </notempty>
+                    <!-- 评论 -->
+                    <notempty name="data.comment">
+                        <h3 class="padding-left">评论</h3>
+                        <volist name="data.comment" id="comment">
+                            <div class="list">
+                                <a class="item item-avatar" href="#">
+                                    <img src="http://f.hiphotos.baidu.com/baike/w%3D268/sign=81e9dd8536a85edffa8cf925715609d8/6609c93d70cf3bc7a2e57939d300baa1cc112a79.jpg">
+                                    <h2>Venkman</h2>
+                                    <h4>{$comment['add_time']|date="Y-m-d H:i:s",###}</h4>
+                                    <p>{$comment['content']}</p>
+                                </a>
+                            </div>
+                        </volist>
+                    </notempty>
+                </div>
+            </ion-content>
+            <ion-footer-bar class="item-input-inset bar-stable">
+                <label class="item-input-wrapper bar-light">
+                    <i class="icon placeholder-icon"></i>
+                    <input type="search" placeholder="内容">
+                </label>
+                <button class="button icon-left ion-reply button-clear" ng-click="replay();">回复</button>
+            </ion-footer-bar>
+        </ion-view>
+    </script>
+</block>

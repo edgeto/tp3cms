@@ -1,0 +1,64 @@
+<div class="Item hr">
+    <div class="current">添相册相片</div>
+</div>
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<form action="" method="post" enctype="multipart/form-data" ng-app="PicImg" ng-controller="MyPicImg">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">相片ID：</th>
+            <td>{$data['id']}</td>
+            <input type="hidden" id="id" name="id" value="{$data['id']}"/>
+        </tr>
+        <tr>
+            <th width="100">相册名称：</th>
+            <td>{$data['pic']['name']}</td>
+        </tr>
+        <tr>
+            <th width="100">图片显示：</th>
+            <td>
+                <if condition="(substr($data['url'],0,4) eq 'http') OR (substr($data['url'],0,5) eq 'https') "> 
+                    <a href="{$data['url']}" target="_blank">
+                        <img src="{$data['url']}" style="width: 150px;height: 150px;">
+                    </a>
+                <else /> 
+                    <a href="__UPLOAD__/{$data['url']}" target="_blank">
+                        <img src="__UPLOAD__/{$data['url']}" style="width: 150px;height: 150px;">
+                    </a>
+                </if>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">图片：</th>
+            <td>
+                <input id="url" type="file" class="input" size="30" name="url" placeholder="请选择图片"/>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">图片url：</th>
+            <td>
+                <input id="picUrl" type="text" class="input" size="30" name="url" placeholder="请填写图片url" value="{$data['url']}"/>（有图片url，则不用上传图片）
+            </td>
+        </tr>
+        <tr>
+            <th width="100">名称：</th>
+            <td>
+                <input id="name" type="text" class="input" size="30" name="name" placeholder="请填写名称" value="{$data['name']}"/>（不能包含特殊字符）
+            </td>
+        </tr>
+        <tr>
+            <th width="100">描述：</th>
+            <td>
+                <input id="desc" type="text" class="input" size="30" name="desc" placeholder="请填写描述" value="{$data['desc']}"/>（不能包含特殊字符）
+            </td>
+        </tr>
+        <tr>
+            <th width="100">排序：</th>
+            <td>
+                <input id="sort" type="text" class="input" size="30" name="sort" placeholder="请填写数字" value="{$data['sort']}"/>（不能包含特殊字符）
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

@@ -1,0 +1,120 @@
+<div class="Item hr">
+    <span class="fr">系统现有问题<b>{$count}</b>个</span>
+    <div class="current">问题列表</div>
+</div>
+<form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td class="td_30">ID</td>
+            <td>标题</td>
+            <td>图片</td>
+            <td class="td_30">排序</td>
+            <td class="td_30">首页</td>
+            <td class="td_30">推荐</td>
+            <td class="td_30">状态</td>
+            <td class="td_30">PC</td>
+            <td class="td_30">WAP</td>
+            <td>添加时间</td>
+            <td>更新时间</td>
+            <td>来源</td>
+            <td width="18%">操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['title']}</td>
+                <td><a href="__UPLOAD__/{$vo['img']}" target="_blank">查看</a></td>
+                <td>{$vo['sort']}</td>
+                <td>
+                    <if condition="$vo['is_index'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_recompend'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['status'] eq 0 ">
+                        正常
+                        <else />
+                        禁用
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_pc'] eq 1 ">
+                        是
+                        <else />
+                        否
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_wap'] eq 1 ">
+                        是
+                        <else />
+                        否
+                    </if>
+                </td>
+                <td>
+                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['from']|get_infofrom_name}
+                </td>
+                <td>
+                    [ <a href="{:U('ask/answer', array('id' => $vo['id']))}">查看回答</a> ]
+                    [ <a href="{:U('ask/addanswer', array('id' => $vo['id']))}">添加回答</a> ]
+                    [ <a href="{:U('ask/edit', array('id' => $vo['id']))}">编辑</a> ]
+                    [ <a href="javascript:void(0);" value="{:U('ask/delete', array('id' => $vo['id']))}" name="{$vo['title']}" class="del">删除</a> ]
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

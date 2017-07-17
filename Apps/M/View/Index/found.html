@@ -1,0 +1,111 @@
+<extend name="Public:base" />
+<block name='ng'>Found</block>
+<block name="description"><meta name="description" content=""></block>
+<block name="keywords"><meta name="keywords" content=""></block>
+<block name="main">
+    <!-- m站发现页面 -->
+    <script id="found.html" type="text/ng-template">
+        <ion-view title="发现">
+            <ion-content class="padding-top">
+                <!-- <ion-refresher pulling-text="下拉刷新" on-refresh="loadMore()"></ion-refresher> -->
+                <!-- <section class="container">
+                    <a ng-href="#/app/founddetail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section> -->
+                <section class="container" ng-if="list.length === 0">
+                     <strong class="row row-wrap">No results found...</strong>
+                </section>
+                <section class="container" ng-repeat="vo in list">
+                    <a href="/article/detail/id/<{vo.id}>.html" ng-if="vo.type == 1">
+                        <h5><{vo.title}></h5>
+                        <div class="row row-wrap">
+                            <div class="col" ng-if="vo.static.length === 0">
+                                <img class="full-image" src="{$qd_url}/<{vo.img}>" ng-if="vo.img">
+                            </div>
+                            <div class="col" ng-repeat="v in vo.static">
+                                <img class="full-image" src="{$qd_url}/<{v.url}>" ng-if="v.url">
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/video/detail/id/<{vo.id}>.html" ng-if="vo.type == 2">
+                        <h5><{vo.title}></h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="{$qd_url}/<{vo.img}>" ng-if="vo.img">
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/pic/detail/id/<{vo.id}>.html" ng-if="vo.type == 3">
+                        <h5><{vo.name}></h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="{$qd_url}/<{vo.img}>" ng-if="vo.img">
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <ion-infinite-scroll on-infinite="loadMore()" distance="1%" ng-if="loadMoreRes"></ion-infinite-scroll>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- M站登陆 -->
+    <script id="login.html" type="text/ng-template">
+        <ion-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- 弹窗登陆 -->
+    <script id="login1.html" type="text/ng-template">
+        <ion-modal-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</block>

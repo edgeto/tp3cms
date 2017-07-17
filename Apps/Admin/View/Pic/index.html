@@ -1,0 +1,229 @@
+<div class="Item hr">
+    <span class="fr">系统现有相册<b>{$count}</b>个</span>
+    <div class="current">相册列表</div>
+</div>
+<form action="" method="get">
+    <!-- 搜索 -->
+    <label for="name">名称：</label>
+    <label>
+        <input id="name" type="text" class="input" size="20" name="name" placeholder="请输入名称" value="{$map['title']}"/>
+    </label>
+    <label for="category_id">分类：</label>
+    <label>
+        <select name="category_id" id="category_id">
+            <option value='-1'>请选择</option>
+            <!-- <option value='0'>未分类</option> -->
+            <foreach  name="category_list" item="vo" key="k">
+                <if condition="$map['category_id'] eq $k ">
+                    <option value="{$k}" selected>{$vo}</option>
+                    <else />
+                    <option value="{$k}">{$vo}</option>
+                </if>
+            </foreach>
+        </select>   
+    </label>
+    <label for="is_index">首页：</label>
+    <label>
+        <select name="is_index" id="is_index">
+            <option value="-1">请选择</option>
+            <eq name="map.is_index" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_index" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <label for="is_index">推荐：</label>
+    <label>
+        <select name="is_recompend" id="is_recompend">
+            <option value="-1">请选择</option>
+            <eq name="map.is_recompend" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_recompend" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <label for="status">状态：</label>
+    <label>
+        <select name="status" id="status">
+            <option value="-1">请选择</option>
+            <eq name="map.status" value="1">
+                <option value="1" selected>禁用</option>
+                <else/>
+                <option value="1">禁用</option>
+            </eq>
+            <eq name="map.status" value="0">
+                <option value="0" selected>正常</option>
+                <else/>
+                <option value="0">正常</option>
+            </eq>
+        </select>
+    </label>
+    <label for="is_pc">PC：</label>
+    <label>
+        <select name="is_pc" id="is_pc">
+            <option value="-1">请选择</option>
+            <eq name="map.is_pc" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_pc" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <label for="is_wap">WAP：</label>
+    <label>
+        <select name="is_wap" id="is_wap">
+            <option value="-1">请选择</option>
+            <eq name="map.is_wap" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_wap" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <button class="btn submit">搜索</button>
+    <a class="btn" href="{:U()}">清空</a>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td class="td_30">ID</td>
+            <td>名称</td>
+            <td>分类</td>
+            <td class="td_30">主图</td>
+            <td>图片</td>
+            <td class="td_30">期刊</td>
+            <td>像素</td>
+            <td class="td_30">排序</td>
+            <td class="td_30">首页</td>
+            <td class="td_30">推荐</td>
+            <td class="td_30">状态</td>
+            <td>添加时间</td>
+            <td>更新时间</td>
+            <td>来源</td>
+            <td>采集</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['name']}</td>
+                <td>{$vo['category_id']|get_pic_category_name}</td>
+                <td>
+                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                        <a href="{$vo['img']}" target="_blank">查看</a>
+                    <else /> 
+                        <a href="__UPLOAD__/{$vo['img']}" target="_blank">查看</a>
+                    </if>
+                </td>
+                <td>
+                    [ <a href="{:U('pic/listimg', array('id' => $vo['id']))}">查看</a> ]
+                    [ <a href="{:U('pic/addimg', array('id' => $vo['id']))}" name="{$vo['name']}">添加</a> ]
+                </td>
+                <td>{$vo['week']}</td>
+                <td>{$vo['px']}</td>
+                <td>{$vo['sort']}</td>
+                <td>
+                    <if condition="$vo['is_index'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_recompend'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['status'] eq 0 ">
+                        正常
+                        <else />
+                        禁用
+                    </if>
+                </td>
+                <td>
+                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['from']}
+                </td>
+                <td>
+                    <notempty name="vo.collect_url">
+                        <a href="{$vo['collect_url']}" target="_blank">查看</a>
+                    </notempty>
+                </td>
+                <td>
+                    [ <a href="{:C('DEFAULT_URL.HOME')}/pic/detail/id/{$vo.id}/from/test" target="_blank">查看</a> ]
+                    [ <a href="{:U('pic/comment', array('id' => $vo['id']))}">查看评论</a> ]
+                    [ <a href="{:U('pic/addcomment', array('id' => $vo['id']))}">添加评论</a> ]
+                    [ <a href="{:U('pic/edit', array('id' => $vo['id']))}">编辑</a> ]
+                    [ <a href="javascript:void(0);" value="{:U('pic/delete', array('id' => $vo['id']))}" name="{$vo['name']}" class="del">删除</a> ]
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

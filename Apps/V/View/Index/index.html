@@ -1,0 +1,107 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main">
+        <div class="container video-header">
+            <div class="row">
+                <div class="col-md-4 left">
+                   <volist name="video_header" id="vo" key="k">
+                        <if condition="$k eq 1">
+                            <section>
+                                <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img src="{$vo.img}" alt="{$vo.title}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                    </if>
+                                    <p class="desc text-ellipsis text-center">{$vo.title}</p>
+                                </a>
+                                <!-- <p class="text-muted">
+                                    <span class="add_time">{$vo.add_time|date='Y-m-d',###}</span>
+                                    <span class="glyphicon glyphicon-play-circle"></span>
+                                    <span class="view">{$vo.time}</span>
+                                </p> -->
+                            </section>
+                        </if>
+                   </volist>
+                </div>
+                <div class="col-md-8 right">
+                    <volist name="video_header" id="vo" key="k">
+                        <if condition="$k neq 1">
+                            <section class="col-md-3">
+                                <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img src="{$vo.img}" alt="{$vo.title}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                    </if>
+                                    <p class="desc text-ellipsis">{$vo.title}</p>
+                                </a>
+                               <!--  <p class="text-muted">
+                                   <span class="add_time">{$vo.add_time|date='Y-m-d',###}</span>
+                                   <span class="glyphicon glyphicon-play-circle"></span>
+                                   <span class="view">{$vo.time}</span>
+                               </p> -->
+                            </section>
+                        </if>
+                    </volist>
+
+                </div>
+            </div>
+        </div>
+        <div class="container hot-recommend">
+            <div class="title">
+                <h4>
+                    <a>热门推荐</a>
+                    <a href="/index/more" class="more">更多视频</a>
+                </h4>
+                <div class="row text-center">
+                 <volist name="recompend_list" id="vo">
+                    <section class="col-md-3">
+                        <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                            <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                <img src="{$vo.img}" alt="{$vo.title}"/>
+                            <else /> 
+                                <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                            </if>
+                            <p class="desc text-ellipsis text-left">{$vo.title}</p>
+                        </a>
+                        <p class="text-muted text-left">
+                            <span class="add_time">{$vo.add_time|date="Y-m-d",###}</span>
+                            <span class="glyphicon glyphicon-play-circle"></span>
+                            <span class="view">{$vo.time}</span>
+                        </p>
+                    </section>
+                 </volist>
+                </div>
+            </div>
+        </div>
+        <div class="container video">
+            <div class="title">
+                <h4>
+                    <a title="全部视频">全部视频</a>
+                    <volist name="center_nav" id="vo">
+                        <a class="padding" href="{$vo.url}" title="{$vo.name}">{$vo.name}</a>
+                    </volist>
+                    <a class="more" href="/index/more" title="更多视频">更多视频</a>
+                </h4>
+                <div class="row text-center">
+                    <volist name="list" id="vo">
+                        <section class="col-md-3">
+                            <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                    <img src="{$vo.img}" alt="{$vo.title}"/>
+                                <else /> 
+                                    <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                </if>
+                                <p class="desc text-ellipsis text-left">{$vo.title}</p>
+                            </a>
+                            <p class="text-muted text-left">{$vo.add_time|date='Y-m-d',###}<span class="glyphicon glyphicon-play-circle"></span>1.6万</p>
+                        </section>
+                    </volist>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

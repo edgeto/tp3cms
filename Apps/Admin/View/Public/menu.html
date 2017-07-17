@@ -1,0 +1,37 @@
+<div class="menu">
+    <ul>
+        <volist name="headerMenu" id="vo" key="k">
+            <if condition="$k eq 1">
+                <if condition="$vo.current eq 1">
+                    <li class="fisrt current">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                <else />
+                    <li class="fisrt">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                </if>
+            <elseif condition="$k eq count($headerMenu)" />
+                <if condition="$vo.current eq 1">
+                    <li class="end end_current">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                    <else />
+                    <li class="end">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                </if>
+            <else />
+                <if condition="$vo.current eq 1">
+                    <li class="current">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                <else />
+                    <li class="">
+                        <span><a href="{$vo.route}">{$vo.name}</a></span>
+                    </li>
+                </if>
+            </if>
+        </volist>
+    </ul>
+</div>

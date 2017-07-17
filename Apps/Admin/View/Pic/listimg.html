@@ -1,0 +1,76 @@
+<div class="Item hr">
+    <span class="fr">系统现有{$data['name']}相册相片<b>{$count}</b>个</span>
+    <div class="current">相册相片列表</div>
+</div>
+<form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>相册名称</td>
+            <td>图片名称</td>
+            <td>图片</td>
+            <td>图片描述</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['pic']['name']}</td>
+                <td>{$vo['name']}</td>
+                <td>
+                    <if condition="(substr($vo['url'],0,4) eq 'http') OR (substr($vo['url'],0,5) eq 'https') "> 
+                        <a href="{$vo['url']}" target="_blank">
+                        <img src="{$vo['url']}" style="height:30px;"/></a>
+                    <else /> 
+                        <a href="__UPLOAD__/{$vo['url']}" target="_blank">
+                        <img src="__UPLOAD__/{$vo['url']}" style="height:30px;"/></a>
+                    </if>
+                </td>
+                <td>{$vo['desc']}</td>
+                <td>
+                    [ <a href="{:U('pic/editimg', array('id' => $vo['id']))}">编辑</a> ]
+                    [ <a href="javascript:void(0);" value="{:U('pic/deleteimg', array('id' => $vo['id']))}" name="{$vo['name']}" class="del">删除</a> ]
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,44 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main">
+        <div class="container video-list">
+            <div class="title">
+                <h4>
+                    <span class="glyphicon glyphicon-facetime-video"></span>
+                    <span class="title-lg">视频列表</span>
+                    <span class="sort">默认排序：</span>
+                    <if condition="$order eq 'new' ">
+                        <a class="new active" href="{:U('/index/more',array('order'=>'new'))}" title="最新发布">最新发布<i class="glyphicon glyphicon-sort-by-attributes-alt"></i></a>
+                        <a class="view" href="{:U('/index/more',array('order'=>'view'))}" title="播放最多">播放最多<i class="glyphicon glyphicon-sort-by-attributes-alt"></i></a>
+                    <else /> 
+                        <a class="new" href="{:U('/index/more',array('order'=>'new'))}" title="最新发布">最新发布<i class="glyphicon glyphicon-sort-by-attributes-alt"></i></a>
+                        <a class="view active" href="{:U('/index/more',array('order'=>'view'))}" title="播放最多">播放最多<i class="glyphicon glyphicon-sort-by-attributes-alt"></i></a>
+                    </if>
+                    <span class="pull-right">共计：{$count}个视频</span>
+                </h4>
+                <div class="row text-left no-margin-right">
+                    <div class="left no-padding-left">
+                        <volist name="list" id="vo">
+                            <section class="col-md-3 no-padding-right">
+                                <a href="/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img src="{$vo.img}" alt="{$vo.title}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}"/>
+                                    </if>
+                                    <p class="desc text-ellipsis text-left">{$vo.title}</p>
+                                </a>
+                                <p class="text-muted text-left">{$vo.add_time|date='Y-m-d',###}<span class="glyphicon glyphicon-play-circle"></span>1.6万</p>
+                            </section>
+                        </volist>
+                        <div class="page">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

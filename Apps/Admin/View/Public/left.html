@@ -1,0 +1,17 @@
+<div id="Left">
+    <div id="control" class=""></div>
+    <div class="subMenuList">
+        <div class="itemTitle">
+            常用操作
+        </div>
+        <ul>
+            <volist name="leftMenu" id="vo">
+                <if condition="$vo.current eq 1">
+                    <li class="current"><a href="{$vo.route}">{$vo.name}</a></li>
+                <else />
+                    <li class=""><a href="{$vo.route}">{$vo.name}</a></li>
+                </if>
+            </volist>
+        </ul>
+    </div>
+</div>

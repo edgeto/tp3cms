@@ -1,0 +1,247 @@
+<extend name="Public:base" />
+<block name='ng'>Me</block>
+<block name="description"><meta name="description" content=""></block>
+<block name="keywords"><meta name="keywords" content=""></block>
+<block name="main">
+    <!-- m站我的 -->
+    <script id="me.html" type="text/ng-template">
+        <ion-view title="我的">
+            <ion-content class="me">
+                <div class="list">
+                    <a class="item item-avatar item-icon-right" href="#/app/login" ng-if="is_login == 0">
+                        <img src="__IMG__/default.jpg">
+                        <p class="padding-top">未登陆</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-avatar item-icon-right" href="#/app/user" ng-if="is_login">
+                        <img src="http://www.runoob.com/try/demo_source/venkman.jpg">
+                        <p class="padding-top">邱秋源</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <a class="item item-icon-left item-icon-right" href="#/app/collect" ng-if="1">
+                        <i class="icon ion-heart"></i>
+                        <p>收藏</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                    <!--<a class="item item-icon-left item-icon-right" href="#/app/login">
+                        <i class="icon ion-person-add"></i>
+                        <p>公众号</p>
+                        <i class="icon ion-grid"></i>
+                    </a>-->
+                    <a class="item item-icon-left item-icon-right" href="#/app/about">
+                        <i class="icon ion-gear-a"></i>
+                        <p>关于</p>
+                        <i class="icon ion-ios-arrow-right"></i>
+                    </a>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- M站登陆 -->
+    <script id="login.html" type="text/ng-template">
+        <ion-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- 弹窗登陆 -->
+    <script id="login1.html" type="text/ng-template">
+        <ion-modal-view view-title="登陆">
+          
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+    <!-- m站会员信息 -->
+    <script id="user.html" type="text/ng-template">
+        <ion-view view-title="个人信息">
+            <ion-content>
+                <div class="list">
+                    <a class="item item-avatar-right" href="#/app/user">
+                        <img src="http://www.runoob.com/try/demo_source/venkman.jpg">
+                        <p class="padding-top" style="color: #000">头像</p>
+                    </a>
+                    <a class="item " href="#/app/login">
+                        昵称
+                        <span class="item-note">
+                            邱秋源
+                        </span>
+                    </a>
+                    <a class="item" href="#/app/login">
+                        手机号码
+                        <span class="item-note">
+                            15218310220
+                        </span>
+                    </a>
+                    <a class="item" href="#/app/login">
+                        邮箱
+                        <span class="item-note">
+                            edgeto@163.com
+                        </span>
+                    </a>
+                    <a class="item" href="#/app/login">
+                        性别
+                        <span class="item-note">
+                            男
+                        </span>
+                    </a>
+                    <a class="item" href="#/app/login">
+                        个性签名
+                        <span class="item-note">
+                            无限风光在险峰
+                        </span>
+                    </a>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- m站关于我们 -->
+    <script id="about.html" type="text/ng-template">
+        <ion-view title="关于" hide-tabs>
+            <ion-content class="ion-content">
+                <div class="list card">
+
+                    <div class="item item-avatar">
+                        <img src="http://a.36krcnd.com/nil_class/5c6f370b-7b95-4523-bc56-d68b3d5c9646/723391481827214996.jpg!heading">
+                        <h2>Marty McFly</h2>
+                        <p>November 05, 1955</p>
+                    </div>
+
+                    <div class="item item-body">
+                        <img class="" src="http://a.36krcnd.com/nil_class/5c6f370b-7b95-4523-bc56-d68b3d5c9646/723391481827214996.jpg!heading">
+                        <p>
+                            This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                            the content is from a card-body consisting of an image and paragraph text. The footer
+                            consists of tabs, icons aligned left, within the card-footer.
+                        </p>
+                        <p>
+                            <a href="#" class="subdued">1 Like</a>
+                            <a href="#" class="subdued">5 Comments</a>
+                        </p>
+                        <img class="" src="http://a.36krcnd.com/nil_class/5c6f370b-7b95-4523-bc56-d68b3d5c9646/723391481827214996.jpg!heading">
+                    </div>
+
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- m收藏 -->
+    <script id="collect.html" type="text/ng-template">
+        <ion-view view-title="我的收藏" hide-tabs>
+            <ion-nav-buttons side="left" >
+                <button ng-click="goIndex()" ng-hide="true" class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;首页
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right" >
+                <button class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-android-search"></i>
+                </button>
+            </ion-nav-buttons>
+            <ion-content class="lists">
+                <section class="container">
+                    <a ng-href="coldetail.html">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="img/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/coldetail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="img/1.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/coldetail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="img/1.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/coldetail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="img/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/coldetail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="img/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="img/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+            </ion-content>
+        </ion-view>
+    </script>
+</block>

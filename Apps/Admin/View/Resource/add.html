@@ -1,0 +1,52 @@
+<div class="Item hr">
+    <div class="current">添加资源</div>
+</div>
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">名称：</th>
+            <td><input id="name" type="text" class="input" size="30" name="name" placeholder="请输入名称"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">控制器：</th>
+            <td><input id="controller" type="text" class="input" size="30" name="controller" placeholder="请输入控制器"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">动作：</th>
+            <td><input id="action" type="text" class="input" size="30" name="action" placeholder="请输入动作"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">路由：</th>
+            <td><input id="route" type="text" class="input" size="30" name="route" placeholder="请输入路由"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">父资源：</th>
+            <td>
+                <select name="pid" id="pid">
+                        <option value='0'>请选择</option>
+                    <volist  name="parent_list" id="vo">
+                        <option value="{$vo['id']}">{$vo.name}</option>
+                    </volist>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">导航名称：</th>
+            <td><input id="nav_name" type="text" class="input" size="30" name="nav_name" placeholder="请输入导航名称"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">显示在导航：</th>
+            <td>
+                <input type="radio" name="show_nav" value='0' class="tbl_type" checked='checked'> 不显示
+                <input type="radio" name="show_nav" value='1' class="tbl_type"> 显示
+            </td>
+        </tr>
+        <tr>
+            <th width="100">导航显示排序：</th>
+            <td><input id="show_order" type="text" class="input" size="30" name="show_order" placeholder="数字" value="1"/>（只能是数字）</td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

@@ -1,0 +1,41 @@
+<div class="Item hr">
+    <div class="current">修改广告位</div>
+</div>
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">ID：</th>
+            <td>{$data['id']}</td>
+            <input type="hidden" id="id" name="id" value="{$data['id']}"/>
+        </tr>
+        <tr>
+            <th width="100">名称：</th>
+            <td><input id="name" type="text" class="input" size="30" name="name" placeholder="请输入名称" value="{$data['name']}"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">宽度：</th>
+            <td><input id="width" type="text" class="input" size="30" name="width" placeholder="请输入数字" value="{$data['width']}"/> px（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">高度：</th>
+            <td><input id="height" type="text" class="input" size="30" name="height" placeholder="请输入数字" value="{$data['height']}"/> px（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">类型：</th>
+            <td>
+                <select name="type">
+                    <if condition="$data['type'] eq 0 ">
+                        <option value="0" selected>单图</option>
+                        <option value="1">多图轮播</option>
+                        <else />
+                        <option value="0">单图</option>
+                        <option value="1" selected>多图轮播</option>
+                    </if>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

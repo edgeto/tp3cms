@@ -1,0 +1,42 @@
+<div class="Item hr">
+    <div class="current">添加管理员</div>
+</div>
+<form action="" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">名称：</th>
+            <td><input id="username" type="text" class="input" size="30" name="username" placeholder="请输入名称"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">密码：</th>
+            <td><input id="password" type="password" class="input" size="30" name="password" placeholder="请输入密码"/></td>
+        </tr>
+        <tr>
+            <th width="100">确认密码：</th>
+            <td><input id="repassword" type="password" class="input" size="30" name="repassword" placeholder="请输入确认密码"/>（输入密码）</td>
+        </tr>
+        <tr>
+            <th width="100">角色：</th>
+            <td>
+                <select name="role_id" id="role_id">
+                        <option value='0'>请选择</option>
+                    <volist  name="role_list" id="vo">
+                        <option value="{$vo['id']}">{$vo.name}</option>
+                    </volist>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">状态：</th>
+            <td>
+                <select name="status">
+                    <option value="0" selected>启用</option>
+                    <option value="1">禁用</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

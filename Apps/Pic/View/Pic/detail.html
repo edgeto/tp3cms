@@ -1,0 +1,151 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="main container-fluid">
+        <div class="container">
+            <h4 class="title breadcrumbs">
+                <!-- <a>首页</a> &gt; <a>资讯</a> &gt; <a>焦点资讯</a> -->
+                <foreach name="breadcrumbs" item="vo" key="k">    
+                    <a href="{$vo.url}" title="{$vo.name}">{$vo.name}</a>
+                    <if condition="$k neq (count($breadcrumbs)-1) ">
+                        >
+                    </if>
+                </foreach>
+            </h4>
+        </div>
+        <!-- sogou -->
+        <div class="container info">
+           <!--  <script type="text/javascript">
+              var sogou_ad_id=724671;
+              var sogou_ad_height=90;
+              var sogou_ad_width=960;
+            </script>
+            <script type='text/javascript' src='http://images.sohu.com/cs/jsfile/js/c.js'></script -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title">{$data.name}</h4>
+                    <div class="msg">
+                        <p>发行时间：{$data.add_time|date='Y-m-d',###}</p>
+                        <p>访问次数：{$data.view}次</p>
+                        <p>高清照片：{$count}张</p>
+                        <p>照片格式：JPG</p>
+                        <p>分 辨 率: {$data.px}</p>
+                        <p>专辑介绍：</p>
+                        <p>{$data.desc}</p>
+                        <div class="statement">
+                            <p>免责声明: </p>
+                            <p>
+                                1、本站部分内容来源自网络，图片版权属于原作者，本站转载仅供大家学习和交流，切勿用于任何商业活动。
+                            </p>  
+                            <p>
+                                2、本站不承担用户因使用这些资源对自己和他人造成任何形式的损失或伤害。
+                            </p>  
+                            <p>
+                                3、本声明未涉及的问题参见国家有关法律法规，当本声明与国家法律法规冲突时，以国家法律法规为准。
+                            </p>
+                            <p>
+                                4、如果侵害了您的合法权益，请您及时与我们,我们会在第一时间删除相关内容!
+                            </p>
+                            <p>
+                                5、联系方式： edgeto@163.com
+                            </p>
+                        </div>
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone"></a><a href="#" class="bds_tsina" data-cmd="tsina"></a><a href="#" class="bds_tqq" data-cmd="tqq"></a><a href="#" class="bds_renren" data-cmd="renren"></a><a href="#" class="bds_weixin" data-cmd="weixin"></a></div>
+                    </div>
+                </div>
+                <!--<div class="col-md-4">
+                    <h4 class="title">
+                        个人资料
+                    </h4>
+                </div>-->
+            </div>
+        </div>
+        <div class="container content text-center">
+            <!--<div class="caption">
+                <h5>奇葩搞怪的创意,简直萌一脸血!</h5>
+            </div>-->
+            <volist name="list" id="vo">
+                <if condition="(substr($vo['url'],0,4) eq 'http') OR (substr($vo['url'],0,5) eq 'https') "> 
+                    <img src="__IMG__/grey.gif" data-original="{$vo.url}?v={$data.v_no}" alt="{$vo.name}"/>
+                <else /> 
+                    <img src="__IMG__/grey.gif" data-original="__UPLOAD__{$vo.url}?v={$data.v_no}" alt="{$vo.name}" />
+                </if>
+            </volist>
+            <div class="collect text-right">
+                <input type="hidden" id="pic_id" name="pic_id" value="{$data.id}" />
+                <empty name="collect">
+                    <span class="glyphicon glyphicon-heart" ng-click="collect({$data.id})"></span>
+                <else /> 
+                    <span class="glyphicon glyphicon-heart in" ng-click="collect({$data.id})"></span>
+                </empty> 
+            </div> 
+            <div class="page">
+                {$page}
+            </div>
+
+            <div class="post_comment">
+                <h4 class="title text-left">
+                    <a>评论</a>
+                    <span class="label">&nbsp;请先登陆后评论，文明上网理性发言，请遵守新闻评论服务协议</span>
+                </h4>
+                <textarea class="form-control commentContent" rows="3">
+                </textarea>
+                <button type="button" class="btn btn-primary btn-lg btn-block doComment" ng-click="doComment()">评论</button>
+            </div>
+
+            <div class="comment-list h">
+                <h4 class="title text-left">
+                    <a>全部评论</a>
+                </h4>
+                <a class="media" href="" ng-repeat = "x in commentList">
+                
+                    <div class="media-left">
+                        <img class="img-circle" src="__IMG__/grey.gif" data-original="__UPLOAD__/<{x.headimgurl}>" alt="...">
+                    </div>
+                    <div class="media-body text-left">
+                        <p><{x.nickname}>  <span class="time"><{x.add_time*1000|date:'yyyy-MM-dd HH:mm'}></span></p>
+                        <p><{x.content}></p>
+                    </div>
+                </a>
+                <button type="button" class="btn btn-primary btn-lg btn-block moreComment h" ng-click="moreComment()">更多评论</button>
+            </div>
+        </div>
+        <div class="container">
+            <section>
+                <!-- 相关推荐 -->
+                <div class="list-title">
+                    <!-- <img src="__IMG__/goddess.png" class="img-responsive"> -->
+                    <h1>推荐图片</h1>
+                </div>
+                <div class="row more">
+                    <volist name="about" id="vo">
+                        <section class="col-md-3">
+                            <a href="/pic/detail/id/{$vo.id}.html" target="_blank" title="{$vo.name}">
+                                <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') "> 
+                                    <img class="img-responsive" src="__IMG__/grey.gif" data-original="{$vo.img}?v={$vo.v_no}" alt="{$vo.name}"/>
+                                <else /> 
+                                    <img src="__IMG__/grey.gif" data-original="__UPLOAD__{$vo.img}?v={$vo.v_no}" class="img-responsive" alt="{$vo.name}" />
+                                </if>
+                                <div class="caption">
+                                    <h5 class="text-ellipsis">{$ov.name}</h5>
+                                </div>
+                            </a>
+                            <p class="text-muted">
+                                <span class="glyphicon glyphicon-time"></span>{$vo.add_time|date='Y-m-d',###}
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-eye-open"></span> {$vo.view}
+                            </p>
+                        </section>
+                    </volist>
+                </div>
+            </section>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__STATIC__/angular/angular.min.js"></script>
+    <script src="__JS__/pic.js"></script>
+      <!-- 百度分享 -->
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+</block>

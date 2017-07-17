@@ -1,0 +1,151 @@
+<extend name="Public:base" />
+<block name='ng'>Lists</block>
+<block name="description"><meta name="description" content=""></block>
+<block name="keywords"><meta name="keywords" content=""></block>
+<block name="frame">
+    <!-- m站框架 -->
+    <script id="app.html" type="text/ng-template">
+        <ion-side-menus>
+            <ion-side-menu-content>
+                <ion-nav-bar>
+                    <ion-nav-back-button >
+                    </ion-nav-back-button>
+                </ion-nav-bar>
+                <!-- 在这里加上tab -->
+                <ion-nav-view name="lists"></ion-nav-view>
+            </ion-side-menu-content>
+        </ion-side-menus>
+    </script>
+</block>
+<block name="main">
+    <!-- m站列表页 -->
+    <script id="lists.html" type="text/ng-template">
+        <ion-view view-title="这是列表<{list}>" hide-tabs>
+            <ion-nav-buttons side="left" >
+                <button ng-click="goIndex()" ng-hide="indexBtn" class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;首页
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right" >
+                <button class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-android-search"></i>
+                </button>
+            </ion-nav-buttons>
+            <ion-content class="padding-top">
+                <a ng-href="#/app/login">登陆</a>
+                <a ng-click="modal.show()">打开</a>
+                <section class="container">
+                    <a ng-href="#/app/detail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/detail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/detail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/detail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+                <section class="container">
+                    <a ng-href="#/app/detail/1">
+                        <h5>女不强大天不容 剧情和标题一样雷</h5>
+                        <div class="row row-wrap">
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/1.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/2.jpg" >
+                            </div>
+                            <div class="col">
+                                <img class="full-image" src="__IMG__/3.jpg" >
+                            </div>
+                        </div>
+                    </a>
+                </section>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- M站登陆 -->
+    <script id="login.html" type="text/ng-template">
+        <ion-view view-title="登陆">
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <script id="login1.html" type="text/ng-template">
+        <ion-modal-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</block>

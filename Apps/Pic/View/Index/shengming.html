@@ -1,0 +1,22 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="main container-fluid">
+        <div class="container info">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="title">{$data.title}</h4>
+                    <div class="msg">
+                        {$data.content|htmlspecialchars_decode}
+                    </div>
+                </div>
+            </div>
+        </div>
+</block>
+<block name="script">
+    <script src="__STATIC__/angular/angular.min.js"></script>
+    <script src="__JS__/pic.js"></script>
+      <!-- 百度分享 -->
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script> 
+</block>

@@ -1,0 +1,248 @@
+<extend name="Public:base" />
+<block name="main">
+    <!-- 搜索 -->
+    <div class="main container-fluid">
+        <div class="container list">
+            <div class="search">
+                <form class="col-md-8 no-padding-left" role="search" action="">
+                    <div class="input-group">
+                        <input type="text" id="keyword" class="form-control" placeholder="请输入关键字" name="keyword" value="{$keyword}">
+                          <span class="input-group-btn">
+                              <button class="btn btn-default search-btn" type="button">
+                                    <span class="glyphicon glyphicon-search main-search" aria-hidden="true"></span>
+                                    搜索一下
+                              </button>
+                          </span>
+                    </div><!-- /input-group -->
+                </form>
+                <div class="col-md-12 no-padding-left">
+                    <ul class="nav navbar-nav">
+                        <li type="news" class="<if condition='$type eq "news"'>active</if>" ><a>资讯</a></li>
+                        <li type="video" class="<if condition='$type eq "video"'>active</if>"><a>视频</a></li>
+                        <li type="pic" class="<if condition='$type eq "pic"'>active</if>"><a>图片</a></li>
+                        <input type="hidden" name="type" value="{$type}" id="type">
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                 <!--   <ul class="nav navbar-nav">
+                        <li class="active"><a>全部</a></li>
+                        <li><a>全部</a></li>
+                        <li><a>全部</a></li>
+                    </ul> -->
+                    <if condition="$type eq 'news'"> 
+                        <!-- 资讯 -->
+                        <notempty name="list">
+                            <volist name="list" id="vo">
+                                <a class="media" href="{:C('DEFAULT_URL.NEWS')}/article/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <div class="media-left">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img class="media-object" src="{$vo.img}" alt="{$vo.name}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="media-object" alt="{$vo.name}" />
+                                        </if>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3>{$vo.title}</h3>
+                                        <p class="time">{$vo.add_time|date='Y-m-d',###} 访问量 : {$vo.view}</p>
+                                        <p>{$vo.abstract}</p>
+                                    </div>
+                                </a>
+                            </volist>
+                        <else />
+                            <notempty name="keyword">
+                                <div class="search-msg">
+                                    抱歉，没有找到“<span>{$keyword}</span>”的搜索结果，为您推荐以下结果
+                                </div>
+                            <else />
+                                <div class="search-msg">
+                                    抱歉，没有输入关键词，为您推荐以下结果
+                                </div>
+                            </notempty>
+                            <volist name="article_list" id="vo">
+                                <a class="media" href="{:C('DEFAULT_URL.NEWS')}/article/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <div class="media-left">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img class="media-object" src="{$vo.img}" alt="{$vo.title}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="media-object" alt="{$vo.title}" />
+                                        </if>
+                                    </div>
+                                    <div class="media-body">
+                                        <h3>{$vo.title}</h3>
+                                        <p class="time">{$vo.add_time|date='Y-m-d',###} 访问量 : {$vo.view}</p>
+                                        <p>{$vo.abstract}</p>
+                                    </div>
+                                </a>
+                            </volist>
+                        </notempty>
+                    <elseif condition="$type eq 'video'"/>
+                        <!-- 视频 -->
+                        <notempty name="list">
+                            <volist name="list" id="vo">
+                                <section class="col-md-4 video-item no-padding-left">
+                                    <a href="{:C('DEFAULT_URL.V')}/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img src="{$vo.img}" alt="{$vo.title}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}" />
+                                        </if>
+                                        <p class="desc text-ellipsis text-left no-margin">{$vo.title}</p>
+                                    </a>
+                                    <p class="text-muted text-left">
+                                        <span class="">{$vo.add_time|date='Y-m-d',###}</span>
+                                        <span class="glyphicon glyphicon-play-circle"></span>
+                                        <span class="view">{$vo.time}</span>
+                                    </p>
+                                </section>
+                            </volist>
+                        <else />
+                            <notempty name="keyword">
+                                <div class="search-msg">
+                                    抱歉，没有找到“<span>{$keyword}</span>”的搜索结果，为您推荐以下结果
+                                </div>
+                            <else />
+                                <div class="search-msg">
+                                    抱歉，没有输入关键词，为您推荐以下结果
+                                </div>
+                            </notempty>
+                            <volist name="video_list" id="vo">
+                                <section class="col-md-4 video-item no-padding-left">
+                                    <a href="{:C('DEFAULT_URL.V')}/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img src="{$vo.img}" alt="{$vo.title}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" alt="{$vo.title}" />
+                                        </if>
+                                        <p class="desc text-ellipsis text-left no-margin">{$vo.title}</p>
+                                    </a>
+                                    <p class="text-muted text-left">
+                                        <span class="">{$vo.add_time|date='Y-m-d',###}</span>
+                                        <span class="glyphicon glyphicon-play-circle"></span>
+                                        <span class="view">{$vo.time}</span>
+                                    </p>
+                                </section>
+                            </volist>
+                        </notempty>
+                    <else /> 
+                        <!-- 图片 -->
+                        <notempty name="list">
+                            <volist name="list" id="vo">
+                                <section class="col-md-4 pic-item no-padding-left">
+                                    <a href="{:C('DEFAULT_URL.PIC')}/pic/detail/id/{$vo.id}.html" target="_blank" title="{$vo.name}">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img class="img-responsive" src="{$vo.img}" alt="{$vo.name}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="img-responsive" alt="{$vo.name}" />
+                                        </if>
+                                        <div class="caption">
+                                            <h5 class="text-ellipsis">{$vo.name}</h5>
+                                        </div>
+                                    </a>
+                                    <p class="text-muted">
+                                        <span class="add_time">{$vo.add_time|date="Y-m-d",###}</span>
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="view">{$vo.view}</span>
+                                    </p>
+                                </section>
+                            </volist>
+                        <else />
+                            <notempty name="keyword">
+                                <div class="search-msg">
+                                    抱歉，没有找到“<span>{$keyword}</span>”的搜索结果，为您推荐以下结果
+                                </div>
+                            <else />
+                                <div class="search-msg">
+                                    抱歉，没有输入关键词，为您推荐以下结果
+                                </div>
+                            </notempty>
+                            <volist name="pic_list" id="vo">
+                                <section class="col-md-4 pic-item no-padding-left">
+                                    <a href="{:C('DEFAULT_URL.PIC')}/pic/detail/id/{$vo.id}.html" target="_blank" title="{$vo.name}">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img class="img-responsive" src="{$vo.img}" alt="{$vo.name}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="img-responsive" alt="{$vo.name}" />
+                                        </if>
+                                        <div class="caption">
+                                            <h5 class="text-ellipsis">{$vo.name}</h5>
+                                        </div>
+                                    </a>
+                                    <p class="text-muted">
+                                        <span class="add_time">{$vo.add_time|date="Y-m-d",###}</span>
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                        <span class="view">{$vo.view}</span>
+                                    </p>
+                                </section>
+                            </volist>
+                        </notempty>
+                    </if>
+                    <div class="page">
+                        {$page}
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <section class="col-md-12">
+                        <h4 class="title">
+                            <a>热点资讯</a>
+                        </h4>
+                        <div class="col-md-12 hot-list">
+                            <volist name="hot_article" id="vo" key="k">
+                                <h5 class="new_h text-ellipsis text-block">
+                                    <a href="{:C('DEFAULT_URL.PIC')}/article/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    {$k}、{$vo.title}
+                                    </a>
+                                </h5>
+                            </volist>
+                        </div>
+                    </section>
+                    <section class="col-md-12">
+                        <h4 class="title">
+                            <a>热点视频</a>
+                        </h4>
+                        <div class="col-md-12 hot-list video-list">
+                            <volist name="hot_video" id="vo" key="k">
+                                <a class="media" href="{:C('DEFAULT_URL.V')}/video/detail/id/{$vo.id}.html" target="_blank" title="{$vo.title}">
+                                    <div class="media-left">
+                                        <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                            <img class="media-object" src="{$vo.img}" alt="{$vo.title}"/>
+                                        <else /> 
+                                            <img src="__UPLOAD__{$vo.img}" class="media-object" alt="{$vo.title}" />
+                                        </if>
+                                    </div>
+                                    <div class="media-body">
+                                        <p>{$vo.title}</p>
+                                    </div>
+                                </a>
+                            </volist>
+                        </div>
+                    </section>
+                    <section class="col-md-12">
+                        <h4 class="title">
+                            <a>热点图片</a>
+                        </h4>
+                        <div class="col-md-12 hot-list pic-list">
+                            <volist name="hot_pic" id="vo" >
+                                <a class="pic-item" href="{:C('DEFAULT_URL.PIC')}/pic/detail/id/{$vo.id}.html" target="_blank" title="{$vo.name}">
+                                    <h5 class="text-ellipsis">
+                                        {$vo.name}
+                                    </h5>
+                                    <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                        <img class="img-100" src="{$vo.img}" alt="{$vo.name}"/>
+                                    <else /> 
+                                        <img src="__UPLOAD__{$vo.img}" class="img-100" alt="{$vo.name}" />
+                                    </if>
+                                </a>
+                            </volist>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__JS__/home.js"></script>
+</block>

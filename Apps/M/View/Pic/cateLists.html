@@ -1,0 +1,48 @@
+<extend name="Public:base" />
+<block name='ng'>Lists</block>
+<block name="keywords"><meta name="keywords" content="{$keywords} {$data['keywords']}"></block>
+<block name="description"><meta name="description" content="{$description} {$data['desc']}"></block>
+<block name="frame">
+    <!-- m站框架 -->
+    <script id="app.html" type="text/ng-template">
+        <ion-side-menus>
+            <ion-side-menu-content>
+                <ion-nav-bar>
+                    <ion-nav-back-button >
+                    </ion-nav-back-button>
+                </ion-nav-bar>
+                <!-- 在这里加上tab -->
+                <ion-nav-view name="lists"></ion-nav-view>
+            </ion-side-menu-content>
+        </ion-side-menus>
+    </script>
+</block>
+<block name="main">
+    <!-- m站列表页 -->
+    <script id="lists.html" type="text/ng-template">
+        <ion-view view-title="{$data['name']}" hide-tabs>
+            <ion-nav-buttons side="left" >
+                <button ng-click="goIndex()" ng-hide="indexBtn" class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-ios-arrow-back"></i>&nbsp;首页
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="right" >
+                <button class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-android-search"></i>
+                </button>
+            </ion-nav-buttons>
+            <ion-content class="padding-top">
+                <notempty name="lists">
+                    <volist name="lists" id="vo">
+                        <a class="item item-thumbnail-left" href="/pic/lists/id/{$vo.id}.html">
+                            <img src="__UPLOAD__/{$vo.img}">
+                            <h2>{$vo.name}</h2>
+                            <p>{$vo.desc}</p>
+                            <span class="badge badge-assertive">0</span>
+                        </a>
+                    </volist>
+                </notempty>
+            </ion-content>
+        </ion-view>
+    </script>
+</block>

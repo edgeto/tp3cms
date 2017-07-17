@@ -1,0 +1,106 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 edit-security">
+                    <!-- <h5 class="title">
+                        <a>首页</a> &gt; <a>资讯</a> &gt; <a>焦点资讯</a>
+                    </h5> -->
+                    <div class="line"></div>
+                    <div class="account">
+                        <div class="item security-lev">
+                            <p>
+                                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                                当前账号安全级别：
+                                <span class="lev-color">{$securityRank}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {$securityRankPercent}%">
+                                    </div>
+                                </div>
+                            </p>
+                            <label class="text-muted">提示：为了保障您的账号安全，请尽快完善资料</label>
+                            <label class="text-muted pull-right">上次登录时间：{$user.last_login_time|date="Y-m-d H:i",###}</label>
+                        </div>
+                        <div class="line"></div>
+                        <div class="item password">
+                            <div>
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                密码强度：
+                                <span class="lev-color">{$passwrodRank}</span>
+                                <a class="pull-right btn btn-danger" href="pwd.html">修改密码</a>
+                            </div>
+                        </div>
+                        <div class="line"></div>
+                        <!-- <div class="item phone">
+                            <empty name="user.phone">
+                                <div>
+                                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                                    安全手机：尚未绑定
+                                    <span class="pull-right">
+                                        <a class="btn btn-default">领取奖励</a>
+                                        <a class="btn btn-danger">绑定手机</a>
+                                    </span>
+                                </div>
+                            <else /> 
+                                <div>
+                                    <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                                    安全手机：已绑定({$user.phone})
+                                    <span class="pull-right">
+                                        <a class="btn btn-default">领取奖励</a>
+                                        <a class="btn btn-danger">改绑手机</a>
+                                    </span>
+                                </div>
+                            </empty> 
+                            <label class="text-muted">
+                                忘记密码时，你可以通过绑定的手机找回密码
+                            </label>
+                        </div>
+                        <div class="line"></div>
+                        <div class="item phone">
+                            <empty name="user.email">
+                                <div>
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    安全邮箱：尚未绑定
+                                    <span class="pull-right">
+                                        <a class="btn btn-default">领取奖励</a>
+                                        <a class="btn btn-danger" href="email.html">绑定邮箱</a>
+                                    </span>
+                                </div>
+                            <else /> 
+                               <div>
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    安全邮箱：已绑定 ({$user.email})
+                                    <span class="pull-right">
+                                        <a class="btn btn-default">领取奖励</a>
+                                        <a class="btn btn-danger">改绑邮箱</a>
+                                    </span>
+                                </div>
+                            </empty> 
+                            <label class="text-muted">
+                                忘记密码时，你可以通过绑定的邮箱找回密码
+                            </label>
+                        </div>
+                        <div class="line"></div> -->
+                        <!-- <div class="item payPwd">
+                            <div>
+                                <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+                                支付密码：尚未设定
+                                <span class="pull-right">
+                                    <a class="btn btn-danger">立即设置</a>
+                                </span>
+                            </div>
+                            <label class="text-muted">
+                                设置支付密码，交易付款或账户信息更改时需输入
+                            </label>
+                        </div>
+                        <div class="line"></div> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

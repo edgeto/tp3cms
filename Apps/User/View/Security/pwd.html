@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 edit-security">
+                    <h5 class="title">
+                        <!-- <a>首页</a> &gt; <a>资讯</a> &gt; <a>焦点资讯</a> -->
+                    </h5>
+                    <div class="line"></div>
+                    <div class="account">
+                        <div class="item edit-password">
+                            <p class="bg-danger text-center">
+                                修改登陆密码
+                                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                                请牢记你的新密码，如有遗失请通过安全邮箱和手机找回。
+                            </p>
+                            <form class="form-horizontal" method="post">
+                                <div class="form-group">
+                                    <label for="oldpassword" class="col-sm-4 control-label">旧密码：</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" class="form-control" id="oldpassword" name="oldpassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-4 control-label">新密码：</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" class="form-control" id="password" name="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="repassword" class="col-sm-4 control-label">密码确认：</label>
+                                    <div class="col-sm-4">
+                                        <input type="password" class="form-control" id="repassword" name="repassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-4">
+                                        <button type="submit" class="btn btn-block btn-danger">确认修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

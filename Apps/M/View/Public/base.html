@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html ng-app="<block name='ng'>App</block>">
+<head>
+    <meta charset="utf-8">
+    <title>{$title}</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+    <block name="description"><meta name="description" content="{$description}"></block>
+    <!--<link href="__STATIC__/ionic/css/ionic.css" rel="stylesheet">-->
+    <link href="//cdn.bootcss.com/ionic/1.2.4/css/ionic.min.css" rel="stylesheet">
+    <link href="__CSS__/respond.css" rel="stylesheet">
+    <link href="__CSS__/base.css" rel="stylesheet">
+    <!-- 样式 -->
+    <block name="style"></block>
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?df0e8b8d42531e9b8928d961d5c091c5";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+    <div ng-controller="MainCtrl">
+    <!--<div>-->
+        <ion-nav-view animation="slide-left-right" class="ion-view"></ion-nav-view>
+    </div>
+    <block name="frame">
+        <!-- m站框架 -->
+        <script id="app.html" type="text/ng-template">
+            <ion-side-menus>
+                <ion-side-menu-content>
+                    <ion-nav-bar>
+                        <ion-nav-back-button >
+                        </ion-nav-back-button>
+                    </ion-nav-bar>
+                    <!-- 在这里加上tab -->
+                    <ion-tabs class="tabs-icon-top <{hideTabs}>">
+                        <ion-tab title="首页" icon="ion-ios-home" href="/index/index.html" badge="1" badge-style="badge-assertive" ng-click="jump('/index/index.html')">
+                            <ion-nav-view name="home"></ion-nav-view>
+                        </ion-tab>
+                        <ion-tab title="更多" icon="ion-android-compass" href="/index/found.html" ng-click="jump('/index/found.html')">
+                            <ion-nav-view name="found"></ion-nav-view>
+                        </ion-tab>
+                        <ion-tab title="问答" icon="ion-ios-help" href="#/app/ask" ng-click="jump('/index/ask.html')">
+                            <ion-nav-view name="ask"></ion-nav-view>
+                        </ion-tab>
+                        <ion-tab title="我的" icon="ion-person" href="/index/me.html" ng-click="jump('/index/me.html')">
+                            <ion-nav-view name="me"></ion-nav-view>
+                        </ion-tab>
+                    </ion-tabs>
+                </ion-side-menu-content>
+            </ion-side-menus>
+        </script>
+    </block>
+    <!-- 主体 -->
+    <block name="main"></block>
+    <!-- M站(弹窗)登陆 -->
+    <block name="login">
+        <script id="login.html" type="text/ng-template">
+            <ion-view view-title="登陆">
+                <ion-header-bar class="bar bar-header bar-positive">
+                    <h1 class="title">登 陆</h1>
+                    <button class="button button-clear button-primary" ng-click="loginModal.hide()">Cancel</button>
+                    <button class="button button-clear button-primary" ng-click="loginModal.hide()">Cancel</button>
+                </ion-header-bar>
+                <ion-content class="">
+                    <div class="list">
+                        <label class="item item-input">
+                            <i class="icon ion-person placeholder-icon"></i>
+                            <input name="username" type="text" placeholder="帐号" ng-model="username">
+                        </label>
+                        <label class="item item-input">
+                            <i class="icon ion-locked placeholder-icon"></i>
+                            <input name="password" type="text" placeholder="密码">
+                        </label>
+                        <div class="padding">
+                            <button ng-click="login()" class="button button-block button-positive">登 陆</button>
+                        </div>
+                    </div>
+                </ion-content>
+            </ion-view>
+        </script>
+    </block>
+    <!-- M站(弹窗)注册 -->
+    <block name="register">
+        <script id="register.html" type="text/ng-template">
+            <ion-view view-title="注册">
+                <ion-header-bar class="bar bar-header bar-positive">
+                    <h1 class="title">注册</h1>
+                    <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+                </ion-header-bar>
+                <ion-content class="">
+                    <div class="list">
+                        <label class="item item-input">
+                            <i class="icon ion-person placeholder-icon"></i>
+                            <input name="username" type="text" placeholder="帐号" ng-model="username">
+                        </label>
+                        <label class="item item-input">
+                            <i class="icon ion-locked placeholder-icon"></i>
+                            <input name="password" type="text" placeholder="密码">
+                        </label>
+                        <label class="item item-input">
+                            <i class="icon ion-locked placeholder-icon"></i>
+                            <input name="repassword" type="text" placeholder="请再次输入密码">
+                        </label>
+                        <div class="padding">
+                            <button ng-click="register()" class="button button-block button-positive">注 册</button>
+                        </div>
+                    </div>
+                </ion-content>
+            </ion-view>
+        </script>
+    </block>
+    <!-- JS -->
+    <!--<script src="__STATIC__/ionic/js/ionic.bundle.js"></script>-->
+    <!-- angularjs cookie 存在版本问题 -->
+    <!--<script src="http://www.runoob.com/static/ionic/js/ionic.bundle.min.js"></script>-->
+    <script src="//cdn.bootcss.com/ionic/1.0.1/js/ionic.bundle.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/angular-cookies/1.2.16/angular-cookies.js"></script>
+    <!-- ionic 轮播 ion-slide 异步不可以repeat -->
+    <block name="Carousel"></block>
+    <script src="__JS__/app.js"></script>
+    <script src="__JS__/controllers.js"></script>
+    <script src="__JS__/services.js"></script>
+    <!-- apiurl -->
+    <block name="api">
+        <script>
+            var API_URL = "{$api_url}";
+            var QD_URL = "{$qd_url}";
+            var is_login = 1;
+        </script>
+    </block>
+    <!-- weixin -->
+    <block name="weixin">
+        <notempty name="is_weixin">
+            <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+            <script>
+                {$wx_config}
+                wx.ready(function(){
+                    //分享到朋友圈
+                    wx.onMenuShareTimeline({
+                        title: '测试微信分享标题', // 分享标题
+                        link: 'http://m.yssys.cn', // 分享链接
+                        imgUrl: 'http://m.xxxiao.com/wp-content/uploads/sites/3/2016/02/m.xxxiao.com_dc8027a2c0519324d624858df85ef770.jpg', // 分享图标
+                        success: function () {
+                            alert('分享成功');
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+                    //分享给朋友
+                    wx.onMenuShareAppMessage({
+                        title: '测试微信分享标题', // 分享标题
+                        desc: '测试微信分享描述', // 分享描述
+                        link: 'http://m.yssys.cn', // 分享链接
+                        imgUrl: 'http://m.xxxiao.com/wp-content/uploads/sites/3/2016/02/m.xxxiao.com_dc8027a2c0519324d624858df85ef770.jpg', // 分享图标
+                        type: '', // 分享类型,music、video或link，不填默认为link
+                        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                        success: function () {
+                            alert('分享成功');
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+                    //分享到QQ
+                    wx.onMenuShareQQ({
+                        title: '', // 分享标题
+                        desc: '', // 分享描述
+                        link: '', // 分享链接
+                        imgUrl: '', // 分享图标
+                        success: function () {
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+                    //分享到腾讯微博
+                    wx.onMenuShareWeibo({
+                        title: '', // 分享标题
+                        desc: '', // 分享描述
+                        link: '', // 分享链接
+                        imgUrl: '', // 分享图标
+                        success: function () {
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+                    //分享到QQ空间
+                    wx.onMenuShareQZone({
+                        title: '', // 分享标题
+                        desc: '', // 分享描述
+                        link: '', // 分享链接
+                        imgUrl: '', // 分享图标
+                        success: function () {
+                            // 用户确认分享后执行的回调函数
+                        },
+                        cancel: function () {
+                            // 用户取消分享后执行的回调函数
+                        }
+                    });
+                    var btn = document.getElementById('btn');
+                    btn.onclick = function(){
+                        //拍照或从手机相册中选图接口
+                        wx.chooseImage({
+                            count: 1, // 默认9
+                            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                            success: function (res) {
+                                var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                            }
+                        });
+                    }
+                });
+            </script>
+        </notempty>
+    </block>
+    <block name="script"></block>
+</body>
+</html>

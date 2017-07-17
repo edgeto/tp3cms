@@ -1,0 +1,55 @@
+<header>
+  <div class="container-fluid toolbar-bg">
+      <div class="container toolbar">
+          <nav class="navbar">
+              <a class="collect"><img alt="Brand" src="__IMG__/star.svg">收藏本站</a>
+              <div class="container-fluid">
+                  <ul class="nav navbar-nav">
+                      <foreach name="main_nav" item="vo" >
+                          <li><a href="{$vo.url}" target="_blank">{$vo.name}</a></li>
+                      </foreach>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li>
+                          <a class="webtips">你好，欢迎来到衍生网</a>
+                      </li>
+                      <notempty name="Think.session.user_auth.username">
+                         <li>
+                            <a class="weblogin" href="{:C('DEFAULT_URL.USER')}">{$Think.session.user_auth.username}</a>
+                          </li>
+                        <li>
+                            <a href="{:C('DEFAULT_URL.USER')}/public/logout?referer_url={:C('DEFAULT_URL.V')}__SELF__">[退出]</a>
+                        </li>
+                      <else />  
+                        <li>
+                            <a class="weblogin" href="{:C('DEFAULT_URL.USER')}/public/login?referer_url={:C('DEFAULT_URL.V')}__SELF__">[登录]</a>
+                          </li>
+                        <li>
+                            <a href="{:C('DEFAULT_URL.USER')}/public/register?referer_url={:C('DEFAULT_URL.V')}__SELF__">[注册]</a>
+                        </li>
+                      </notempty>
+                  </ul>
+              </div><!-- /.container-fluid -->
+          </nav>
+      </div>
+  </div>
+  <div class="container-fluid main-nav">
+      <div class="container">
+          <ul class="nav navbar-nav">
+            <foreach name="nav" item="vo">
+                <li class="<if condition='$vo.active eq 1'> active </if>"><a href="{$vo.url}">{$vo.name}</a></li>
+            </foreach>
+          </ul>
+          <form class="navbar-form navbar-right" role="search" action="{:C('DEFAULT_URL.SEARCH')}">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="请输入关键字" id='search-input' name="keyword">
+                  <span class="input-group-btn">
+                      <button class="btn btn-default search-btn" type="submit">
+                          <span class="glyphicon glyphicon-search main-search" aria-hidden="true"></span>
+                      </button>
+                  </span>
+              </div><!-- /input-group -->
+          </form>
+      </div>
+  </div>
+</header> 

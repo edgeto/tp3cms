@@ -1,0 +1,139 @@
+<extend name="Public:base" />
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="main">
+    <!-- 首页 -->
+    <script id="home.html" type="text/ng-template">
+        <ion-view title="{$title}">
+            <!-- 主体内容 -->
+            <ion-content class="home">
+                <!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>-->
+                <!-- 轮播图 -->
+                <notempty name="Carousel">
+                    <ion-slide-box class="carousel" active-slide="myActiveSlide" auto-play="true" does-continue="true" slide-interval="2000">
+                        <volist name="Carousel" id="vo">
+                            <ion-slide>
+                                <div class="item-image">
+                                    <a href="{$vo['url']}" title="{$vo.name}">
+                                        <img src="{$qd_url}/{$vo['img']}" alt="{$vo.name}">
+                                    </a>
+                                </div>
+                            </ion-slide>
+                        </volist>
+                    </ion-slide-box>
+                </notempty>
+                <!-- 分类 -->
+                <section class="category">
+                    <div class="row row-wrap">
+                        <!-- start 2016/07/12 :11:00 -->
+                        <div class="col col-25" ng-repeat = "x in Lists">
+                            <a class="item item-image" href="<{x.url}>">
+                                <h2 class="<{x.css}>"><{x.name}></h2>
+                            </a>
+                        </div>
+                        <!-- end 2016/07/12 :11:00 -->
+                        <!--<div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-ios-rose-outline bg_greenblue"></i>
+                                <h2>养生</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-android-hand bg_pink"></i>
+                                <h2>禁忌</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-android-walk bg_green"></i>
+                                <h2>运动</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-android-restaurant bg_orange"></i>
+                                <h2>饮食</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-medkit bg_red"></i>
+                                <h2>中医</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-eye bg_blue"></i>
+                                <h2>病症</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-woman bg_purple"></i>
+                                <h2>女性</h2>
+                            </a>
+                        </div>
+                        <div class="col col-25">
+                            <a class="item item-image" href="#/app/lists/1">
+                                <i class="icon ion-android-more-horizontal bg_grayc"></i>
+                                <h2>更多</h2>
+                            </a>
+                        </div>-->
+                    </div>
+                </section>
+                <!-- M站文章内容列表文章 -->
+                <notempty name="article">
+                    <section class="container article">
+                        <h2 class="title">资讯</h2>
+                        <volist name="article" id="vo">
+                            <a href="/article/detail/id/{$vo['id']}.html" title="{$vo.title}">
+                                <h5>{$vo['title']}</h5>
+                                <div class="row row-wrap">
+                                    <volist name="vo.static" id="static">
+                                        <div class="col">
+                                            <img class="full-image" src="{$qd_url}/{$static['url']}" alt="{$static['name']}">
+                                        </div>
+                                    </volist>
+                                </div>
+                            </a>
+                        </volist>
+                    </section>
+                </notempty>
+                 <!-- 视频 -->
+                <notempty name="video">
+                    <h2 class="title">视频</h2>
+                    <volist name="video" id="vo">
+                        <section class="container">
+                            <a ng-href="/video/detail/id/{$vo['id']}.html" title="{$vo.title}">
+                                <h5>{$vo['title']}</h5>
+                                <div class="row row-wrap">
+                                    <div class="col">
+                                        <img class="full-image" src="{$qd_url}/{$vo['img']}" alt="{$vo['title']}">
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    </volist>
+                </notempty>
+                <!-- 图片 -->
+                <notempty name="pic">
+                    <h2 class="title">图片</h2>
+                    <volist name="pic" id="p">
+                        <section class="container">
+                            <a  href="/pic/detail/id/{$p['id']}.html" title="{$p.title}">
+                                <h5>{$p['name']}</h5>
+                                <div class="row row-wrap">
+                                   <div class="col">
+                                        <img class="full-image" src="{$qd_url}/{$p['img']}" alt="{$p['name']}">
+                                    </div>
+                                </div>
+                            </a>
+                        </section>
+                    </volist>
+                </notempty>
+                <!--<ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>-->
+            </ion-content>
+        </ion-view>
+    </script>
+</block>

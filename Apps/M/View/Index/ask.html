@@ -1,0 +1,109 @@
+<extend name="Public:base" />
+<block name='ng'>Ask</block>
+<block name="description"><meta name="description" content=""></block>
+<block name="keywords"><meta name="keywords" content=""></block>
+<block name="main">
+    <!-- m站问答页面 -->
+    <script id="ask.html" type="text/ng-template">
+        <ion-view title="问答">
+            <ion-nav-buttons side="right" >
+                <button class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-android-search"></i>
+                </button>
+            </ion-nav-buttons>
+            <ion-nav-buttons side="secondary" >
+                <button class="button back-button buttons button-clear header-item text-left">
+                    <i class="icon ion-android-add"></i>
+                </button>
+            </ion-nav-buttons>
+            <ion-content>
+                <ion-list>
+                    <a class="item item-avatar" href="askdetail.html">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                    <a class="item item-avatar" href="#/app/askdetail/1">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                    <a class="item item-avatar" href="#/app/askdetail/1">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                    <a class="item item-avatar" href="#/app/askdetail/1">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                    <a class="item item-avatar" href="#/app/askdetail/1">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                    <a class="item item-avatar" href="#/app/askdetail/1">
+                        <img src="img/2.jpg">
+                        <h2>Venkman</h2>
+                        <p>Back off, man. I'm a scientist.</p>
+                        <span class="badge badge-assertive">0</span>
+                    </a>
+                </ion-list>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- M站登陆 -->
+    <script id="login.html" type="text/ng-template">
+        <ion-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-view>
+    </script>
+    <!-- 弹窗登陆 -->
+    <script id="login1.html" type="text/ng-template">
+        <ion-modal-view view-title="登陆">
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">New Contact</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="">
+                <div class="list">
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="帐号">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-locked placeholder-icon"></i>
+                        <input type="text" placeholder="密码">
+                    </label>
+                    <div class="padding">
+                        <button ng-click="login()" class="button button-block button-positive">登陆/注册</button>
+                    </div>
+                </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+</block>

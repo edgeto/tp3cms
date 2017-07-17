@@ -1,0 +1,63 @@
+<div class="Item hr">
+    <div class="current">添加用户</div>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">
+        <tr>
+            <th width="100">用户名：</th>
+            <td><input id="username" type="text" class="input" size="30" name="username" placeholder="请输入用户名"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">密码：</th>
+            <td><input id="password" type="password" class="input" size="30" name="password" placeholder="请输入密码"/></td>
+        </tr>
+        <tr>
+            <th width="100">确认密码：</th>
+            <td><input id="repassword" type="password" class="input" size="30" name="repassword" placeholder="请再次输入密码"/></td>
+        </tr>
+        <tr>
+            <th width="100">昵称：</th>
+            <td><input id="nickname" type="text" class="input" size="30" name="nickname" placeholder="请输入昵称"/></td>
+        </tr>
+        <tr>
+            <th width="100">邮箱：</th>
+            <td><input id="email" type="email" class="input" size="30" name="email" placeholder="请输入邮箱"/></td>
+        </tr>
+        <tr>
+            <th width="100">电话：</th>
+            <td><input id="phone" type="text" class="input" size="30" name="phone" placeholder="请输入电话"/></td>
+        </tr>
+        <tr>
+            <th width="100">性别：</th>
+            <td>
+                <select name="sex" id="sex">
+                        <option value='-1'>保密</option>
+                        <option value='0'>男</option>
+                        <option value='1'>女</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">状态：</th>
+            <td>
+                <select name="status">
+                    <option value="0" selected>启用</option>
+                    <option value="1">禁用</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th width="100">头像图片：</th>
+            <td><input id="headimgurl" type="file" class="input" size="30" name="headimgurl" placeholder="请选择图片"/>（不能包含特殊字符）</td>
+        </tr>
+        <tr>
+            <th width="100">头像图片url：</th>
+            <td>
+                <input type="text" class="input" size="30" name="headimgurl" placeholder="请填写图片url"/>（有图片url，则不用上传图片）
+            </td>
+        </tr>
+    </table>
+    <div class="commonBtnArea" >
+        <button class="btn submit">提交</button>
+    </div>
+</form>

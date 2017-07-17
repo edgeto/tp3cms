@@ -1,0 +1,53 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main" ng-app="Email" ng-controller="EmailCate">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 edit-security">
+                    <h5 class="title">
+                        <!-- <a>首页</a> &gt; <a>资讯</a> &gt; <a>焦点资讯</a> -->
+                    </h5>
+                    <div class="line"></div>
+                    <div class="account">
+                        <div class="item edit-password">
+                            <p class="bg-danger text-center">
+                                绑定邮箱
+                                <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                                如有遗失密码，可以通过安全邮箱找回。
+                            </p>
+                            <form class="form-horizontal" method="post">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-4 control-label">邮箱：</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" id="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="text" class="col-sm-4 control-label">验证码：</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="code" name="code">
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button class="btn btn-primary getCode" ng-click="getCode()">获取验证码</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-4 col-md-4">
+                                        <button type="button" class="btn btn-block btn-danger" ng-click="email()">确认绑定</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__STATIC__/angular/angular.min.js"></script>
+    <script src="__JS__/user.js"></script>
+</block>

@@ -1,0 +1,183 @@
+<div class="Item hr">
+    <span class="fr">系统现有文章分类<b>{$count}</b>个</span>
+    <div class="current">文章分类列表</div>
+</div>
+<form action="" method="get">
+    <!-- 搜索 -->
+    <label for="name">名称：</label>
+    <label>
+        <input id="name" type="text" class="input" size="20" name="name" placeholder="请输入名称" value="{$map['name']}"/>
+    </label>
+    <label for="desc">描述：</label>
+    <label>
+        <input id="desc" type="text" class="input" size="20" name="desc" placeholder="请输入描述" value="{$map['desc']}"/>
+    </label>
+    <label for="is_index">首页：</label>
+    <label>
+        <select name="is_index" id="is_index">
+            <option value="-1">请选择</option>
+            <eq name="map.is_index" value="1">
+                <option value="1" selected>是</option>
+            <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_index" value="0">
+                <option value="0" selected>否</option>
+            <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <label for="status">状态：</label>
+    <label>
+        <select name="status" id="status">
+            <option value="-1">请选择</option>
+            <eq name="map.status" value="1">
+                <option value="1" selected>禁用</option>
+                <else/>
+                <option value="1">禁用</option>
+            </eq>
+            <eq name="map.status" value="0">
+                <option value="0" selected>正常</option>
+                <else/>
+                <option value="0">正常</option>
+            </eq>
+        </select>
+    </label>
+    <label for="is_pc">PC：</label>
+    <label>
+        <select name="is_pc" id="is_pc">
+            <option value="-1">请选择</option>
+            <eq name="map.is_pc" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_pc" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <label for="is_wap">WAP：</label>
+    <label>
+        <select name="is_wap" id="is_wap">
+            <option value="-1">请选择</option>
+            <eq name="map.is_wap" value="1">
+                <option value="1" selected>是</option>
+                <else/>
+                <option value="1">是</option>
+            </eq>
+            <eq name="map.is_wap" value="0">
+                <option value="0" selected>否</option>
+                <else/>
+                <option value="0">否</option>
+            </eq>
+        </select>
+    </label>
+    <button class="btn submit">搜索</button>
+    <a class="btn" href="{:U()}">清空</a>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+        <thead>
+        <tr>
+            <td class="td_30">ID</td>
+            <td>名称</td>
+            <td>上级</td>
+            <td>分类图片</td>
+            <td class="td_30">排序</td>
+            <td class="td_30">首页</td>
+            <td class="td_30">状态</td>
+            <td class="td_30">PC</td>
+            <td class="td_30">WAP</td>
+            <td>添加时间</td>
+            <td>更新时间</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <volist name="list" id="vo">
+            <tr align="center">
+                <td>{$vo['id']}</td>
+                <td>{$vo['name']}</td>
+                <td>{$vo['pid']|get_art_category_name}</td>
+                <td><a href="__UPLOAD__/{$vo['img']}" target="_blank">查看</a></td>
+                <td>{$vo['sort']}</td>
+                <td>
+                    <if condition="$vo['is_index'] eq 0 ">
+                        否
+                        <else />
+                        是
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['status'] eq 0 ">
+                        正常
+                        <else />
+                        禁用
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_pc'] eq 1 ">
+                        是
+                        <else />
+                        否
+                    </if>
+                </td>
+                <td>
+                    <if condition="$vo['is_wap'] eq 1 ">
+                        是
+                        <else />
+                        否
+                    </if>
+                </td>
+                <td>
+                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+                </td>
+                <td>
+                    [ <a href="{:U('artCategory/edit', array('id' => $vo['id']))}">编辑</a> ]
+                    [ <a href="javascript:void(0);" value="{:U('artCategory/delete', array('id' => $vo['id']))}" name="{$vo['name']}" class="del">删除</a> ]
+                </td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+</form>
+
+<div class="page">
+    {$page}
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".del").click(function(){
+            var del_link = $(this).attr("value");
+            popup.confirm('你真的打算删除 <b>'+ $(this).attr("name")+'</b> 吗?','温馨提示',function(action){
+                if(action == 'ok'){
+                    $.getJSON(del_link, function(json){
+                        if (json.status) {
+                            popup.success(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_success");
+                            },2000);
+                        } else {
+                            popup.error(json.info);
+                            setTimeout(function(){
+                                popup.close("asyncbox_error");
+                            },2000);
+                        }
+
+                        setTimeout(function(){
+                            top.window.location.reload();
+                        },1000);
+                    });
+                }
+            });
+
+            return false;
+        });
+    });
+</script>

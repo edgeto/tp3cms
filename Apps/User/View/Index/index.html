@@ -1,0 +1,101 @@
+<extend name="Public:base" />
+<block name="keywords"><meta name="keywords" content="{$keywords}"></block>
+<block name="description"><meta name="description" content="{$description}"></block>
+<block name="main">
+    <div class="container-fluid main">
+        <!-- 用户基本信息 -->
+        <div class="container">
+            <div class="row">
+                <div class="user-info">
+                    <div class="media">
+                        <div class="media-left">
+                            <empty name="user.headimgurl">
+                                <img class="img-circle avatar" src="__UPLOAD____IMG__/default.jpg" alt="...">
+                            <else /> 
+                                <img class="img-circle avatar" src="__UPLOAD__{$user.headimgurl}" alt="...">
+                            </empty> 
+                        </div>
+                        <div class="media-body">
+                            <a class="block text-right text-muted pull-right" href="/index/info.html">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>完善资料
+                            </a>
+                            <h4 class="nickname">您好，{$Think.session.user_auth.username}！</h4>
+                            <div class="line"></div>
+                            <p class="text-muted">
+                                <label>用户名：<span>{$Think.session.user_auth.username}</span></label>
+                                <label>昵称：<span>{$user.nickname}</span></label>
+                                <label>上次登陆时间：<span>{$user.last_login_time|date="Y-m-d H:i",###}</span></label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 资讯 -->
+        <notempty name="article">
+            <div class="container news">
+                <div class="row">
+                    <div class="title">
+                        <h4>热门资讯<a class="more" href="{:C('DEFAULT_URL.NEWS')}" target="_blank">更多资讯</a></h4>
+                    </div>
+                    <volist name="article" id="vo">
+                        <a class="col-md-3" href="{:C('DEFAULT_URL.NEWS')}/article/detail/id/{$vo.id}.html" target="_blank">
+                            <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                <img src="{$vo.img}" class="img-responsive"/>
+                            <else /> 
+                                <img src="__UPLOAD__{$vo.img}" class="img-responsive"/>
+                            </if>
+                            <div class="caption">
+                                <h5 class="text-ellipsis">{$vo.title}</h5>
+                            </div>
+                        </a>
+                    </volist>
+                </div>
+            </div>
+        </notempty>
+        <!-- 视频 -->
+        <notempty name="video">
+            <div class="container news">
+                <div class="row">
+                    <div class="title">
+                        <h4>热门视频<a class="more" href="{:C('DEFAULT_URL.V')}" target="_blank">更多视频</a></h4>
+                    </div>
+                    <volist name="video" id="vo">
+                        <a class="col-md-3" href="{:C('DEFAULT_URL.V')}/video/detail/id/{$vo.id}.html" target="_blank">
+                             <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                <img src="{$vo.img}" class="img-responsive"/>
+                            <else /> 
+                                <img src="__UPLOAD__{$vo.img}" class="img-responsive"/>
+                            </if>
+                            <div class="caption">
+                                <h5 class="text-ellipsis">{$vo.title}</h5>
+                            </div>
+                        </a>
+                    </volist>
+                </div>
+            </div>
+        </notempty>
+        <!-- 图片 -->
+        <notempty name="pic">
+            <div class="container news">
+                <div class="row">
+                    <div class="title">
+                        <h4>热门图片<a class="more" href="{:C('DEFAULT_URL.PIC')}" target="_blank">更多图片</a></h4>
+                    </div>
+                    <volist name="pic" id="vo">
+                        <a class="col-md-3" href="{:C('DEFAULT_URL.PIC')}/pic/detail/id/{$vo.id}.html" target="_blank">
+                             <if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+                                <img src="{$vo.img}" class="img-responsive"/>
+                            <else /> 
+                                <img src="__UPLOAD__{$vo.img}" class="img-responsive"/>
+                            </if>
+                            <div class="caption">
+                                <h5 class="text-ellipsis">{$vo.title}</h5>
+                            </div>
+                        </a>
+                    </volist>
+                </div>
+            </div>
+        </notempty>
+    </div>
+</block>

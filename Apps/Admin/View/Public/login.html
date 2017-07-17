@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>管理员后台登陆</title>
+    <link rel="stylesheet" type="text/css" href="__CSS__/login.css">
+</head>
+<!--   登陆不使用布局   -->
+{__NOLAYOUT__}
+<body class="loginWeb">
+    <div class="loginBox">
+        <div class="innerBox">
+            <div class="logo"> <img src="__IMG__/logo.png" /></div>
+            <form action="login.html" method="post">
+                <div class="loginInfo">
+                    <ul>
+                        <li class="row1">管理员帐号：</li>
+                        <li class="row2"><input class="input" name="username" id="username" size="30" type="text" /></li>
+                    </ul>
+                    <ul>
+                        <li class="row1">密码：</li>
+                        <li class="row2"><input class="input" name="password" id="pwd" size="30" type="password" /></li>
+                    </ul>
+                    <ul>
+                        <li class="row1">验证码：</li>
+                        <li class="row2"><input class="input" id="verify_code" name="verify_code" type="text" style="width:86px;" /> <img id="verify_code_img" src="{:U('Public/verifyCode')}" title="看不清？单击此处刷新" onclick="this.src+='?rand='+Math.random();"  style="cursor: pointer; vertical-align: middle;"/></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                    <div class="operation">
+                        <button class="btn submit">登录</button>
+                        <button class="btn" type="reset">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(function(){
+        $('#verify_code_img').click();
+    });
+</script>
+</body>
+</html>

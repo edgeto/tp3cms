@@ -1,0 +1,62 @@
+<div class="Item hr">
+    <div class="current">权限分配</div>
+</div>
+<p>您正在为角色：<b>{$role.name}</b> 分配权限，项目和模块有全选和取消全选功能</p>
+<form>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab">
+            <volist name="reource_list" id="vo">
+                <tr>
+                    <td style="font-size: 14px;"><label><input name="resource_id[]" level="1" type="checkbox" obj="node_{$vo.id}_{$vo.id}" value="{$vo.id}"/> <b>[模块(菜单)]</b> {$vo.name}</label></td>
+                </tr>
+                <tr>
+                    <volist name="vo['list']" id="action" mod="5">
+                        <td style="padding-left: 50px">
+                            <label><input name="resource_id[]" level="2" type="checkbox" obj="node_{$action.pid}_{$action.pid}_{$action.id}" value="{$action.id}"/> {$action.name}</label> &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <eq name="mod" value="4"></tr><tr></eq>
+                    </volist>
+                </tr>
+            </volist>
+    </table>
+    <input type="hidden" name="id" value="{$role.id}"/>
+</form>
+<div class="commonBtnArea" >
+    <button class="btn submit">提交</button>
+    <button class="btn reset">恢复</button>
+    <button class="btn empty">清空</button>
+</div>
+
+<script type="text/javascript">
+    //初始化数据
+    function setAccess(){
+        //清空所有已选中的
+        $("input[type='checkbox']").prop("checked",false);
+        var access=$.parseJSON('{$role_acl}');
+        var access_length=access.length;
+        if(access_length>0){
+            for(var i=0;i<access_length;i++){
+                $("input[type='checkbox'][value='" + access[i] + "']").prop("checked","checked");
+            }
+        }
+    }
+    $(function(){
+        //执行初始化数据操作
+        setAccess();
+        $("input[level='1']").click(function(){
+            var obj=$(this).attr("obj")+"_";
+            $("input[obj^='"+obj+"']").prop("checked",$(this).prop("checked"));
+        });
+        //重置初始状态，勾选错误时恢复
+        $(".reset").click(function(){
+            setAccess();
+        });
+        //清空当前已经选中的
+        $(".empty").click(function(){
+            $("input[type='checkbox']").prop("checked",false);
+        });
+        //提交
+        $(".submit").click(function(){
+            commonAjaxSubmit("{:U('Role/doAssignAccess')}");
+        });
+    });
+</script>
