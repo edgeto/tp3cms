@@ -1,0 +1,129 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-xs-12">
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						编辑配置 Edit Web Config
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-main">
+						<form class="form-horizontal" id="sample-form" method="post" enctype="multipart/form-data">
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-1 control-label no-padding-right">ID：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" value="{$data['id']}" readonly="true" />
+										<i class="ace-icon fa fa-leaf green"></i>
+										<input type="hidden" id="id" name="id" value="{$data['id']}"/>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="config_sign" class="col-xs-12 col-sm-1 control-label no-padding-right">配置标识：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="config_sign" name="config_sign" class="width-100" value="{$data['config_sign']}" placeholder="请输入配置标识" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="config_name" class="col-xs-12 col-sm-1 control-label no-padding-right">配置名称：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="config_name" name="config_name" class="width-100" value="{$data['config_name']}" placeholder="请输入配置名称" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="config_value" class="col-xs-12 col-sm-1 control-label no-padding-right">配置值：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="config_value" name="config_value" class="width-100" value="{$data['config_value']}" placeholder="请输入配置值" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="explain" class="col-xs-12 col-sm-1 control-label no-padding-right">说明：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="explain" name="explain" class="width-100" value="{$data['explain']}" placeholder="请输入说明" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="sort" class="col-xs-12 col-sm-1 control-label no-padding-right">排序：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="sort" name="sort" class="width-100" value="{$data['sort']}" placeholder="请输入数字" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="status" class="col-xs-12 col-sm-1 control-label no-padding-right">状态：</label>
+								<div class="col-xs-12 col-sm-5">
+									<select class="form-control" id="status" name="status">
+									 <if condition="$data['status'] eq 0 ">
+				                        <option value="0" selected>启用</option>
+				                        <option value="1">禁用</option>
+				                        <else />
+				                        <option value="0">启用</option>
+				                        <option value="1" selected>禁用</option>
+				                    </if>
+									</select>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<!-- submit -->
+							<div class="col-xs-12 col-sm-1 col-sm-offset-1 no-padding-left">
+								<button class="btn btn-info" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Submit
+								</button>
+							</div>
+							<div class="col-xs-12 col-sm-1">
+								<button class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Reset
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

@@ -1,0 +1,134 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-sm-12">
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						系统信息 system information
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-main no-padding">
+						<table class="table table-bordered table-striped table-hover">
+							<thead class="thin-border-bottom">
+								<tr>
+									<th>
+										<i class="ace-icon fa fa-caret-right blue"></i>name
+									</th>
+									<th>
+										<i class="ace-icon fa fa-caret-right blue"></i>content
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>操作系统</td>
+									<td>
+										<b>{$info['system']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>主机名IP端口</td>
+									<td>
+										<b>{$info['hostport']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>服务器</td>
+									<td>
+										<b>{$info['server']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>PHP运行方式</td>
+									<td>
+										<b>{$info['php_env']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>程序目录</td>
+									<td>
+										<b>{$info['app_dir']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>MYSQL版本</td>
+									<td>
+										<b>{$info['mysql']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>GD库版本</td>
+									<td>
+										<b>{$info['gd']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>上传附件限制</td>
+									<td>
+										<b>{$info['upload_size']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>执行时间限制</td>
+									<td>
+										<b>{$info['exec_time']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>剩余空间</td>
+									<td>
+										<b>{$info['disk_free']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>服务器时间</td>
+									<td>
+										<b>{$info['server_time']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>北京时间</td>
+									<td>
+										<b>{$info['beijing_time']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>allow_url_fopen</td>
+									<td>
+										<b>{$info['fopen']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>register_globals</td>
+									<td>
+										<b>{$info['reg_gbl']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>magic_quotes_gpc</td>
+									<td>
+										<b>{$info['quotes_gpc']}</b>
+									</td>
+								</tr>
+								<tr>
+									<td>magic_quotes_runtime</td>
+									<td>
+										<b>{$info['quotes_runtime']}</b>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div><!-- /.widget-main -->
+				</div><!-- /.widget-body -->
+			</div><!-- /.widget-box -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

@@ -1,0 +1,77 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-xs-12">
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						添加区域 Add Region
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-main">
+						<form class="form-horizontal" id="sample-form" method="post" enctype="multipart/form-data">
+							<div class="form-group">
+								<label for="name" class="col-xs-12 col-sm-1 control-label no-padding-right">名称：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="name" name="name" class="width-100" placeholder="请输入名称" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="pid" class="col-xs-12 col-sm-1 control-label no-padding-right">上级区域：</label>
+								<div class="col-xs-12 col-sm-5">
+									<select class="form-control" id="pid" name="pid">
+				                       	<option value='0'>请选择</option>
+					                    <foreach  name="list" item="vo"  key="k">
+					                        <option value="{$vo.id}">{$vo.name}</option>
+					                    </foreach>
+									</select>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="status" class="col-xs-12 col-sm-1 control-label no-padding-right">状态：</label>
+								<div class="col-xs-12 col-sm-5">
+									<select class="form-control" id="status" name="status">
+				                        <option value="0">启用</option>
+				                        <option value="1">禁用</option>
+									</select>
+								</div>
+								<div class="help-block col-xs-12 col-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<!-- submit -->
+							<div class="col-xs-12 col-sm-1 col-sm-offset-1 no-padding-left">
+								<button class="btn btn-info" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Submit
+								</button>
+							</div>
+							<div class="col-xs-12 col-sm-1">
+								<button class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Reset
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

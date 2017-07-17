@@ -1,0 +1,153 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-sm-12">
+			<div class="alert alert-block alert-success h">
+				<button type="button" class="close" data-dismiss="alert">
+					<i class="ace-icon fa fa-times"></i>
+				</button>
+				<p>
+					<strong>
+						<i class="ace-icon fa fa-check"></i>
+						Well done！
+					</strong>
+					You successfully delete！
+				</p>
+			</div><!-- /.alert-success -->
+			<div class="alert alert-warning h">
+				<button type="button" class="close" data-dismiss="alert">
+					<i class="ace-icon fa fa-times"></i>
+				</button>
+				<strong>Sorry！</strong>
+				<span class="alert-warning-msg">Delete failed！</span>
+				<br>
+			</div>
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						广告列表 Ad List
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-header widget-header-flat text-right">
+						<h4 class="widget-title lighter count-list">
+							系统现有广告<b>{$count}</b>个
+						</h4>
+					</div>
+					<div class="widget-main no-padding">
+						<table class="table table-bordered table-striped table-hover text-center">
+							<thead class="thin-border-bottom text-center">
+								<tr>
+									<th class="text-center">
+										<label class="pos-rel">
+											<input type="checkbox" class="ace" />
+											<span class="lbl"></span>
+										</label>
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>ID
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>名称
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>广告位
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>图片
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>链接
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>排序
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>添加时间
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>更新时间
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>状态
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>操作
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										<td>
+											<label class="pos-rel">
+												<input type="checkbox" class="ace" />
+												<span class="lbl"></span>
+											</label>
+										</td>
+										<td>{$vo['id']}</td>
+										<td>{$vo['name']}</td>
+										<td>{$vo['ad_position_name']}</td>
+						                <td>
+						                	<if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+							                	<a class="blue" href="{$vo['img']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    <else /> 
+							                	<a class="blue" href="__UPLOAD__/{$vo['img']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    </if>
+						                </td>
+						                <td>{$vo['url']}</td>
+						                <td>{$vo['sort']}</td>
+						                <td>
+						                    {$vo['start_time']|date="Y-m-d H:i:s",###}
+						                </td>
+						                <td>
+						                    {$vo['end_time']|date="Y-m-d H:i:s",###}
+						                </td>
+						                <td>
+						                    <if condition="$vo['status'] eq 0 ">
+						                        正常
+						                        <else />
+						                        禁用
+						                    </if>
+						                    <br />
+						                    <if condition="($vo['start_time'] gt NOW_TIME) AND ($vo['end_time'] gt NOW_TIME) ">
+						                        未开始
+						                        <elseif condition="($vo['start_time'] lt NOW_TIME) AND ($vo['end_time'] gt NOW_TIME)"/>
+						                        进行中
+						                        <elseif  condition="$vo['end_time'] lt NOW_TIME" />
+						                        已结束
+						                    </if>
+						                </td>
+										<td>
+											<div class="hidden-sm hidden-xs action-buttons">
+												<a class="green" href="{:U('ad/edit', array('id' => $vo['id']))}">
+													<i class="ace-icon fa fa-pencil bigger-130"></i>
+												</a>
+												<a class="red bootbox-confirm" href="javascript:;" value="{:U('ad/delete', array('id' => $vo['id']))}">
+													<i class="ace-icon fa fa-trash-o bigger-130"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="page">
+						    {$page}
+						</div>
+					</div><!-- /.widget-main -->
+				</div><!-- /.widget-body -->
+			</div><!-- /.widget-box -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

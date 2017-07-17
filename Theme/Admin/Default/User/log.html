@@ -1,0 +1,57 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-sm-12">
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						登陆日志列表 Admin Log List
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-main no-padding">
+						<table class="table table-bordered table-striped table-hover text-center">
+							<thead class="thin-border-bottom text-center">
+								<tr>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>ID
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>用户名
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>登陆时间
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>登陆IP
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										<td>{$vo['id']}</td>
+										<td>
+											<b>{$vo['username']}</b>
+										</td>
+										<td>{$vo['login_time']|date="Y-m-d H:i:s",###}</td>
+										<td>{$vo['login_ip']}</td>
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="page">
+						    {$page}
+						</div>
+					</div><!-- /.widget-main -->
+				</div><!-- /.widget-body -->
+			</div><!-- /.widget-box -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

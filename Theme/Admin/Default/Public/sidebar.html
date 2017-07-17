@@ -1,0 +1,57 @@
+<div id="sidebar" class="sidebar responsive">
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
+    <ul class="nav nav-list">
+        <php>
+            function sonTree($son = array(),$current_id){
+                if(!empty($son)){
+                    echo '<ul class="submenu">';  
+                    foreach ($son as $key => $val) {
+                        if($val['current'] == 1){
+                            echo '<li class="active '. ($val['id'] == $current_id ? '' : 'open' ).'">';
+                        }else{
+                            echo '<li class="">';
+                        }
+                        if(!empty($val['son'])){
+                            echo '<a href="'.$val['route'].'" class="dropdown-toggle">';
+                            echo '<i class="menu-icon fa fa-caret-right"></i>';
+                            echo '<span class="menu-text">'.$val['nav_name'].'</span>';
+                            echo '<b class="arrow fa fa-angle-down"></b>';
+                            echo '</a>';
+                            echo '<b class="arrow"></b>';
+                            sonTree($val['son']);
+                        }else{
+                            echo '<a href="'.$val['route'].'">';
+                            echo '<i class="menu-icon fa fa-caret-right"></i>';
+                            echo '<span class="menu-text">'.$val['nav_name'].'</span>';
+                            echo '</a>';
+                            echo '<b class="arrow"></b>';
+                        }
+                        echo '</li>';
+                    }
+                    echo '</ul>';
+                }
+            }
+        </php>
+        <volist name="sidebar" id="vo">
+            <li class="<eq name='vo.current' value='1'>active <neq name='vo.id' value='{$current_id}'>open</neq></eq>">
+                <a href="{$vo.route}" <notempty name="vo.son">class="dropdown-toggle"</notempty>>
+                    <i class="menu-icon fa fa-desktop"></i>
+                    <span class="menu-text"> {$vo.nav_name} </span>
+                    <notempty name='vo.son'>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </notempty>
+                </a>
+                <b class="arrow"></b>
+                {:sonTree($vo['son'],$current_id)}
+            </li>
+        </volist>
+    </ul><!-- /.nav-list -->
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+</div>

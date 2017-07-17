@@ -1,0 +1,340 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-sm-12">
+			<div class="alert alert-block alert-success h">
+				<button type="button" class="close" data-dismiss="alert">
+					<i class="ace-icon fa fa-times"></i>
+				</button>
+				<p>
+					<strong>
+						<i class="ace-icon fa fa-check"></i>
+						Well done！
+					</strong>
+					You successfully delete！
+				</p>
+			</div><!-- /.alert-success -->
+			<div class="alert alert-warning h">
+				<button type="button" class="close" data-dismiss="alert">
+					<i class="ace-icon fa fa-times"></i>
+				</button>
+				<strong>Sorry！</strong>
+				<span class="alert-warning-msg">Delete failed！</span>
+				<br>
+			</div>
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						视频列表 Video List
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<!-- 搜索 -->
+				<div class="widget-body">
+					<div class="widget-main">
+						<form class="form-inline" action="" method="get">
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="title">标题：</label>
+									<input type="text" id="title" name="title" placeholder="请输入标题" value="{$map['title']}" />
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="category_id">分类：</label>
+								<select class="form-control" id="category_id" name="category_id">
+									<option value="-1">请选择</option>
+						            <!-- <option value='0'>未分类</option> -->
+						            <foreach  name="category_list" item="vo" key="k">
+						                <if condition="$map['category_id'] eq $k ">
+						                    <option value="{$k}" selected>{$vo}</option>
+						                    <else />
+						                    <option value="{$k}">{$vo}</option>
+						                </if>
+						            </foreach>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="is_index">首页：</label>
+								<select class="form-control" id="is_index" name="is_index">
+									<option value="-1">请选择</option>
+						            <eq name="map.is_index" value="1">
+						                <option value="1" selected>是</option>
+					                <else/>
+						                <option value="1">是</option>
+						            </eq>
+						            <eq name="map.is_index" value="0">
+						                <option value="0" selected>否</option>
+					                <else/>
+						                <option value="0">否</option>
+						            </eq>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="is_recompend">推荐：</label>
+								<select class="form-control" id="is_recompend" name="is_recompend">
+									<option value="-1">请选择</option>
+						            <eq name="map.is_recompend" value="1">
+						                <option value="1" selected>是</option>
+					                <else/>
+						                <option value="1">是</option>
+						            </eq>
+						            <eq name="map.is_recompend" value="0">
+						                <option value="0" selected>否</option>
+					                <else/>
+						                <option value="0">否</option>
+						            </eq>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="status">状态：</label>
+								<select class="form-control" id="status" name="status">
+									<option value="-1">请选择</option>
+						            <eq name="map.status" value="1">
+						                <option value="1" selected>禁用</option>
+					                <else/>
+						                <option value="1">禁用</option>
+						            </eq>
+						            <eq name="map.status" value="0">
+						                <option value="0" selected>正常</option>
+					                <else/>
+						                <option value="0">正常</option>
+						            </eq>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="is_pc">PC：</label>
+								<select class="form-control" id="is_pc" name="is_pc">
+									<option value="-1">请选择</option>
+						            <eq name="map.is_pc" value="1">
+						                <option value="1" selected>是</option>
+					                <else/>
+						                <option value="1">是</option>
+						            </eq>
+						            <eq name="map.is_pc" value="0">
+						                <option value="0" selected>否</option>
+					                <else/>
+						                <option value="0">否</option>
+						            </eq>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right" for="is_pc">WAP：</label>
+								<select class="form-control" id="is_wap" name="is_wap">
+									<option value="-1">请选择</option>
+						            <eq name="map.is_wap" value="1">
+						                <option value="1" selected>是</option>
+					                <else/>
+						                <option value="1">是</option>
+						            </eq>
+						            <eq name="map.is_wap" value="0">
+						                <option value="0" selected>否</option>
+					                <else/>
+						                <option value="0">否</option>
+						            </eq>
+								</select>
+							</div>
+							<button class="submit-button" type="submit">
+								<i class="ace-icon fa fa-search bigger-130"></i>
+							</button>
+							<a class="submit-button" href="{:U()}">
+								<i class="glyphicon glyphicon-repeat"></i>
+							</a>
+						</form>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-header widget-header-flat text-right">
+						<h4 class="widget-title lighter count-list">
+							系统现有视频<b>{$count}</b>个
+						</h4>
+					</div>
+					<div class="widget-main no-padding">
+						<table class="table table-bordered table-striped table-hover text-center">
+							<thead class="thin-border-bottom text-center">
+								<tr>
+									<th class="text-center">
+										<label class="pos-rel">
+											<input type="checkbox" class="ace" />
+											<span class="lbl"></span>
+										</label>
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>ID
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>标题
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>分类
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>视频
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>主图
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>图片
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>排序
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>首页
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>推荐
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>状态
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>PC
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>WAP
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>添加时间
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>更新时间
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>来源
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>采集
+									</th>
+									<th class="text-center">
+										<i class="ace-icon fa fa-caret-right blue"></i>操作
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										<td>
+											<label class="pos-rel">
+												<input type="checkbox" class="ace" />
+												<span class="lbl"></span>
+											</label>
+										</td>
+										<td>{$vo['id']}</td>
+										<td>{$vo['title']}</td>
+										<td>{$vo['category_name']}</td>
+						                <td>
+						                	<if condition="(substr($vo['url'],0,4) eq 'http') OR (substr($vo['url'],0,5) eq 'https') ">
+							                	<a class="blue" href="{$vo['url']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    <else /> 
+							                	<a class="blue" href="__UPLOAD__/{$vo['url']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    </if>
+						                </td>
+						                <td>
+						                	<if condition="(substr($vo['img'],0,4) eq 'http') OR (substr($vo['img'],0,5) eq 'https') ">
+							                	<a class="blue" href="{$vo['img']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    <else /> 
+							                	<a class="blue" href="__UPLOAD__/{$vo['img']}" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+						                    </if>
+						                </td>
+						                <td>
+						                	<div class="hidden-sm hidden-xs action-buttons">
+							                	<a class="green" href="{:U('video/listimg', array('id' => $vo['id']))}">
+													<i class="ace-icon glyphicon glyphicon-picture"></i>
+												</a>
+							                	<a class="green" href="{:U('video/addImg', array('id' => $vo['id']))}">
+													<i class="ace-icon glyphicon glyphicon-plus"></i>
+												</a>
+											</div>
+						                </td>
+						                <td>{$vo['sort']}</td>
+						                <td>
+						                    <if condition="$vo['is_index'] eq 0 ">
+						                        否
+						                        <else />
+						                        是
+						                    </if>
+						                </td>
+						                <td>
+						                    <if condition="$vo['is_recompend'] eq 0 ">
+						                        否
+						                        <else />
+						                        是
+						                    </if>
+						                </td>
+						                <td>
+						                    <if condition="$vo['status'] eq 0 ">
+						                        正常
+						                        <else />
+						                        禁用
+						                    </if>
+						                </td>
+						                <td>
+						                    <if condition="$vo['is_pc'] eq 1 ">
+						                        是
+						                        <else />
+						                        否
+						                    </if>
+						                </td>
+						                <td>
+						                    <if condition="$vo['is_wap'] eq 1 ">
+						                        是
+						                        <else />
+						                        否
+						                    </if>
+						                </td>
+						                <td>
+						                    {$vo['add_time']|date="Y-m-d H:i:s",###}
+						                </td>
+						                <td>
+						                    {$vo['update_time']|date="Y-m-d H:i:s",###}
+						                </td>
+						                <td>
+						                    {$vo['from']|get_infofrom_name}
+						                </td>
+						                <td>
+						                    <notempty name="vo.collect_url">
+						                        <a href="{$vo['collect_url']}" target="_blank">查看</a>
+						                    </notempty>
+						                </td>
+										<td>
+											<div class="hidden-sm hidden-xs action-buttons">
+												<a class="green" href="{:C('DEFAULT_URL.HOME')}/video/detail/id/{$vo.id}/from/test" target="_blank">
+													<i class="ace-icon fa fa-search-plus bigger-130"></i>
+												</a>
+												<a class="green" href="{:U('video/comment', array('id' => $vo['id']))}" target="_blank">
+													<i class="ace-icon glyphicon glyphicon-list-alt bigger-130"></i>
+													查看评论
+												</a>
+												<a class="red" href="{:U('video/edit', array('id' => $vo['id']))}">
+													<i class="ace-icon fa fa-pencil bigger-130"></i>
+												</a>
+												<a class="red bootbox-confirm" href="javascript:;" value="{:U('video/delete', array('id' => $vo['id']))}">
+													<i class="ace-icon fa fa-trash-o bigger-130"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<div class="page">
+						    {$page}
+						</div>
+					</div><!-- /.widget-main -->
+				</div><!-- /.widget-body -->
+			</div><!-- /.widget-box -->
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>

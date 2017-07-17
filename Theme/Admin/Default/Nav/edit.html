@@ -1,0 +1,120 @@
+<extend name="Public:base" />
+<block name="page-content">
+	<div class="row" style="margin: 0 auto">
+		<div class="col-xs-12">
+			<div class="widget-box transparent">
+				<div class="widget-header widget-header-flat">
+					<h4 class="widget-title lighter">
+						<i class="ace-icon fa fa-star orange"></i>
+						编辑导航： Edit Nav
+					</h4>
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="ace-icon fa fa-chevron-up"></i>
+						</a>
+					</div>
+				</div>
+				<div class="widget-body">
+					<div class="widget-main">
+						<form class="form-horizontal" id="sample-form" method="post" enctype="multipart/form-data">
+							<div class="form-group">
+								<label class="col-xs-12 col-sm-1 control-label no-padding-right">ID：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" class="width-100" value="{$data['id']}" readonly="true" />
+										<i class="ace-icon fa fa-leaf green"></i>
+										<input type="hidden" id="id" name="id" value="{$data['id']}"/>
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="nav_position_id" class="col-xs-12 col-sm-1 control-label no-padding-right">导航位：</label>
+								<div class="col-xs-12 col-sm-5">
+									<select class="form-control" id="nav_position_id" name="nav_position_id">
+				                       	<option value='0'>请选择</option>
+					                    <volist  name="nav_postition_list" id="vo">
+					                        <if condition="$data['nav_position_id'] eq $vo['id'] ">
+					                            <option value="{$vo['id']}" selected>{$vo.name}</option>
+					                            <else />
+					                            <option value="{$vo['id']}">{$vo.name}</option>
+					                        </if>
+					                    </volist>
+									</select>
+								</div>
+								<div class="help-block col-xs-12 cos-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="name" class="col-xs-12 col-sm-1 control-label no-padding-right">名称：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="name" name="name" class="width-100" placeholder="请输入名称" value="{$data['name']}" />
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 cos-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="url" class="col-xs-12 col-sm-1 control-label no-padding-right">链接：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="url" name="url" class="width-100" placeholder="请填写链接" value="{$data['url']}"/>
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 cos-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="sort" class="col-xs-12 col-sm-1 control-label no-padding-right">排序：</label>
+								<div class="col-xs-12 col-sm-5">
+									<span class="block input-icon input-icon-right">
+										<input type="text" id="sort" name="sort" class="width-100" value="0" placeholder="请填写排序" value="{$data['sort']}"/>
+										<i class="ace-icon fa fa-leaf green"></i>
+									</span>
+								</div>
+								<div class="help-block col-xs-12 cos-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="status" class="col-xs-12 col-sm-1 control-label no-padding-right">状态：</label>
+								<div class="col-xs-12 col-sm-5">
+									<select class="form-control" id="status" name="status">
+				                      	<if condition="$data['status'] eq 0 ">
+					                        <option value="0" selected>启用</option>
+					                        <option value="1">禁用</option>
+					                        <else />
+					                        <option value="0">启用</option>
+					                        <option value="1" selected>禁用</option>
+					                    </if>
+									</select>
+								</div>
+								<div class="help-block col-xs-12 cos-sm-3 h"> 
+									Warning tip help! 
+								</div>
+							</div>
+							<!-- submit -->
+							<div class="col-xs-12 col-sm-1 col-sm-offset-1 no-padding-left">
+								<button class="btn btn-info" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Submit
+								</button>
+							</div>
+							<div class="col-xs-12 col-sm-1">
+								<button class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Reset
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /.col -->
+	</div><!-- /.row -->
+</block>
