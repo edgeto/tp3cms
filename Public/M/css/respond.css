@@ -1,0 +1,52 @@
+@charset "utf-8";
+/*基准字号*/
+html{font-size:32px;}
+body,nav.under,.arpbbt .content,.switch_header,.choose_cdt .submit,.hdfx header,.order_summary,.arpbw,.agreement header .nav,.goods_operate,.fixed,.hdfx header .nav{width:100%;max-width:640px;min-width:320px;}
+@media screen and (max-width:330px){
+html{font-size:16px;}
+}
+@media screen and (min-width:331px) and (max-width:350px){
+html{font-size:17px;}
+}
+@media screen and (min-width:351px) and (max-width:370px){
+html{font-size:18px;}
+}
+@media screen and (min-width:371px) and (max-width:390px){
+html{font-size:19px;}
+}
+@media screen and (min-width:391px) and (max-width:410px){
+html{font-size:20px;}
+}
+@media screen and (min-width:411px) and (max-width:430px){
+html{font-size:21px;}
+}
+@media screen and (min-width:431px) and (max-width:450px){
+html{font-size:22px;}
+}
+@media screen and (min-width:451px) and (max-width:470px){
+html{font-size:23px;}
+}
+@media screen and (min-width:471px) and (max-width:490px){
+html{font-size:24px;}
+}
+@media screen and (min-width:491px) and (max-width:510px){
+html{font-size:25px;}
+}
+@media screen and (min-width:511px) and (max-width:530px){
+html{font-size:26px;}
+}
+@media screen and (min-width:531px) and (max-width:550px){
+html{font-size:27px;}
+}
+@media screen and (min-width:551px) and (max-width:570px){
+html{font-size:28px;}
+}
+@media screen and (min-width:571px) and (max-width:590px){
+html{font-size:29px;}
+}
+@media screen and (min-width:591px) and (max-width:610px){
+html{font-size:30px;}
+}
+@media screen and (min-width:611px) and (max-width:630px){
+html{font-size:31px;}
+}

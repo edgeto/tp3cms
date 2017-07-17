@@ -1,0 +1,220 @@
+body{
+    background-color: #f2f2f2;
+}
+.main-nav{
+    // margin-top: 18px;
+}
+.search-msg p{
+    font-size: 18px;
+}
+.search-msg p span{
+    color: #ef3e36;
+}
+.caption h5{
+    margin-bottom: 0;
+}
+div.info .bdsharebuttonbox {
+    float: none;
+    margin: 0 0 0 20px;
+}
+/*** start slideBox ***/
+/* css 重置 */
+.picFocus{
+    margin:0 auto;
+    width:100%;
+    padding:5px;
+    position:relative;
+    overflow:hidden;
+    zoom:1;
+}
+.picFocus .hd{
+    width:100%;
+    padding-top:5px;
+    overflow:hidden;
+}
+.picFocus .hd ul{
+    margin-right:-5px;
+    overflow:hidden;
+    zoom:1;
+}
+.picFocus .hd ul li{
+    padding-top:5px;
+    float:left;
+    text-align:center;
+}
+.picFocus .hd ul li img{
+    max-width:227px;
+    height:100px;
+    border:2px solid #ddd;
+    cursor:pointer;
+    // margin-right:15px;
+}
+.picFocus .hd ul li.on{
+    background:url("../static/SuperSlide/images/icoUp.gif") no-repeat center 0;
+}
+.picFocus .hd ul li.on img{
+    border-color:#f60;
+}
+.picFocus .bd li{
+    vertical-align:middle;
+}
+.picFocus .bd img{
+    width: 100%;
+    display:block;
+}
+/*** start page ***/
+div.page {
+    margin: 15px 0;
+    padding-left: 15px;
+}
+div.page a {
+    padding: 10px 24px;
+    /*border: #ddd 1px solid;*/
+    color: #666;
+    margin-right: 2px;
+    text-decoration: none;
+    background-color: #ddd;
+}
+div.page a:hover {
+    /*border: #2b66a5 1px solid;*/
+    color: #fff;
+    background-color: #417eb7;
+}
+div.page span.current {
+    /*border: navy 1px solid;*/
+    padding: 10px 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 2px;
+    background-color: #417eb7;
+}
+div.page span.disabled {
+    padding: 3px 7px;
+    border: #929292 1px solid;
+    color: #929292;
+    margin-right: 2px;
+}
+/*** end slideBox ***/
+/*** start 改轮播样式 ***/
+/*.bx-wrapper{
+    margin-bottom: 30px;
+}
+.bx-wrapper .bx-viewport{
+    border: 0 !important;
+}
+.bx-wrapper .bx-caption span{
+    text-align: center;
+    height: 50px;
+    font-size: 16px;
+}
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto{
+    bottom: 0;
+    filter:alpha(opacity=50); !*IE滤镜，透明度50%*!
+    -moz-opacity:0.5; !*Firefox私有，透明度50%*!
+    opacity:0.5;!*其他，透明度50%*!
+}
+div.more{
+    width: 106%;
+}
+#bx-pager a img{
+    height: 75px;
+}
+#bx-pager a.active img, #bx-pager a:focus img{
+    border-bottom: 2px solid #ef3e36;
+}*/
+/*** end 改轮播样式 ***/
+/*** start main ***/
+.main{
+    margin-top: 20px;
+}
+.row.more{
+    // width: 105%;
+}
+.row.more section a img{
+    height: 400px !important;
+}
+.title{
+    background-color: #fff;
+    height: 42px;
+    line-height: 42px;
+    border-left: 2px solid #ef3e36;
+    padding-left: 20px;
+    margin-bottom: 0;
+    color: #000;
+}
+.breadcrumbs a{
+    padding:0 10px;
+}
+.title a{
+    color: #000;
+}
+.title a:hover{
+    color: #ef3e36;
+}
+.info .title{
+    background-color: #ee3f35;
+    color: #fff;
+}
+.info .msg{
+    font-size: 15px;
+    background-color: #fff;
+    padding: 20px 0;
+}
+.info .msg p{
+    padding-left: 20px;
+}
+.content{
+    margin-top: 10px;
+}
+.content img{
+    margin-top: 10px;
+    width: 100%;
+}
+.list-title{
+    text-align: center;
+    padding: 10px;
+    background-color: #ee3f35;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.list-title h1{
+    font-size: 24px;
+    margin:0;
+    color: #fff;
+}
+.list-title img{
+    display: inline;
+}
+/*** start 评论 ***/
+.post_comment .title,.comment-list .title{
+    background-color: #ee3f35;
+}
+.post_comment .title a,.comment-list .title a{
+    color: #fff;
+}
+.commentContent {
+    margin-top: 10px;
+    width: 100%;
+}
+.post_comment button {
+    margin-top: 10px;
+}
+.comment-list a.media{
+    margin: 0;
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid #ededed;
+}
+.comment-list .media-body{
+    padding-top: 10px;
+}
+.comment-list a.media img {
+    width: 80px;
+    height: 80px;
+}
+.comment-list a.media p {
+    color: #999;
+    line-height: 30px;
+}
+/*** end 评论 ***/
+/*** end main ***/

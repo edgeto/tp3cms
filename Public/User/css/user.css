@@ -1,0 +1,135 @@
+/*** start main ***/
+.user-info,.edit-user-info{
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-top: 6px solid #ef3e36;
+}
+.user-info .avatar{
+    width: 100px;
+    height: 100px;
+}
+.user-info .nickname{
+    font-weight: 700;
+}
+.user-info p label{
+    padding-right: 5px;
+}
+.news{
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.title h4,.title h4 a{
+    color: #ef3e36;
+}
+.title h4{
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid #ef3e36;
+}
+a.more{
+    float: right;
+}
+/*** start edit-user-info ***/
+.edit-user-info a:hover{
+    color: #ef3e36;
+}
+.edit-user-box{
+    border-right: 1px dashed #e5e5e5;
+    margin: 20px 0;
+}
+/*** end edit-user-info ***/
+/*** start edit-avatar ***/
+.edit-avatar{
+    margin: 50px 0;
+}
+.edit-avatar img{
+    width: 140px;
+    height: 140px;
+}
+.edit-avatar .edit-btn{
+    margin-top: 30px;
+}
+/*** end edit-avatar ***/
+/*** start security ***/
+.edit-security{
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-top: 6px solid #ef3e36;
+}
+.edit-security .account{
+    padding: 30px 100px;
+    font-size: 18px;
+}
+.edit-security .account .item{
+    padding: 20px 0;
+}
+.edit-security .account label{
+    font-size: 14px;
+}
+.lev-color{
+    color: #fbac06;
+}
+/*** end security ***/
+/*** start edid-password ***/
+.edit-password p{
+    color: #ef3e36;
+    height: 45px;
+    line-height: 45px;
+}
+/*** end password ***/
+/*** start favorite ***/
+.edit-favorite{
+    margin-top: 20px;
+    padding: 20px;
+}
+.favorite .nav{
+    border: 0;
+    background-color:#a60700 ;
+    margin-bottom: 20px;
+}
+.favorite .nav a,.favorite .nav a:hover,.favorite .nav a:visited{
+    color: #fff;
+}
+.favorite ul.nav li{
+    float: left;
+}
+.favorite ul li a,.favorite ul li.active a{
+    font-size: 18px;
+}
+.favorite ul li.active a,.favorite ul li.active a:hover,.favorite ul li.active a:visited,.favorite ul li a:hover,.favorite ul li a:visited{
+    color: #fff;
+    border: 0;
+    border-bottom: 6px solid  #78bcec;
+    background-color: #a60700;
+}
+.favorite .tab-content{
+    padding-top: 20px;
+}
+.favorite img{
+    width: 260px;
+    height: 180px;
+}
+.favorite .media{
+    margin: 0;
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid #ededed;
+}
+.favorite .media h3{
+    margin: 0;
+}
+.favorite .media p.time{
+    margin-top: 10px;
+}
+.favorite .media p{
+    color: #999;
+    line-height: 30px;
+}
+.favorite .pic img{
+    width: 100%;
+    height: auto;
+}
+/*** end favorite ***/

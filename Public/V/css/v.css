@@ -1,0 +1,174 @@
+/*** start main ***/
+.main{
+    margin-top: 30px;
+}
+.video-title{
+    line-height: 30px;
+}
+.video-header .right{
+    padding-right: 0;
+}
+.desc{
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.video-header img{
+    width: 100%;
+}
+.video-header .row .left a img{
+    height: 200px;
+}
+.video-header .row .right a img{
+    height: 90px;
+}
+.video-header a p{
+    text-align: center;
+}
+.hot-recommend .title h4,.video .title h4{
+    color: #ef3e36;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid #ef3e36;
+}
+.hot-recommend img,.video img{
+    width: 100%;
+    height: 150px;
+}
+.video .title h4 a,.hot-recommend .title h4 a{
+    color: #ef3e36;
+}
+.video .title h4 a.padding{
+    padding-left: 30px;
+}
+.video .title h4 a:hover,.hot-recommend .title h4 a:hover{
+    color: #000;
+}
+.video .title h4 a.more,.hot-recommend .title h4 a.more{
+    float: right;
+}
+.breadcrumbs a{
+    padding: 0 10px;
+}
+/*** end main ***/
+/*** start video-list ***/
+.video-list{
+
+}
+.video-list .left img{
+    width: 100%;
+    min-width: 200px;
+    height: 130px;
+}
+.video-list .title h4{
+    color: #ef3e36;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid #ef3e36;
+}
+.video-list .title h4 .glyphicon-facetime-video{
+    font-size: 30px;
+    top: 9px;
+}
+.video-list .title h4 .title-lg{
+    font-size: 20px;
+    font-weight:700;
+}
+.video-list .title h4 .sort{
+    color: #000;
+    font-size: 16px;
+    margin-left: 80px;
+}
+.video-list .title h4 .new,.video-list .title h4 .view{
+    color: #000;
+    font-size: 16px;
+    margin-left: 10px;
+}
+.video-list .title h4 i.glyphicon{
+    font-size: 16px;
+    top: 3px;
+    margin-left: 5px;
+}
+.video-list .title h4 a.active{
+    color:#ef3e36;
+}
+.video-list .row .left a img{
+    height: 190px;
+}
+.video-list .right .row{
+    margin-bottom: 15px;
+    padding: 0 15px 15px 15px;
+    background-color: #f2f2f2;
+}
+.video-list .right .row .media{
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #333333;
+}
+.video-list .right .row .media h5{
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.video-list .right img{
+    width: 150px;
+    height: 100px;
+}
+.video-list .right .row .media .time{
+    padding-right: 10px;
+}
+/*** end video-list ***/
+/*** start detail ***/
+.detail .title{
+    background-color: #fee7e7;
+    height: 42px;
+    line-height: 42px;
+    border-left: 2px solid #ef3e36;
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+.detail .info{
+    color: #999;
+    padding: 10px;
+    line-height: 30px;
+}
+.detail .abstract {
+    color: #999;
+    padding: 10px;
+    line-height: 30px;
+}
+.detail .content video{
+    width: 100%;
+}
+.detail .post_comment .label {
+    color: #333;
+}
+.detail .commentContent {
+    margin-top: 10px;
+    width: 100%;
+}
+.detail .post_comment button {
+    float: right;
+    margin-top: 10px;
+}
+.detail .comment-list {
+    margin-top: 60px;
+}
+.detail a.media{
+    margin: 0;
+    display: block;
+    padding: 20px 0;
+    border-bottom: 1px solid #ededed;
+}
+.detail .comment-list a.media img {
+    width: 80px;
+    height: 80px;
+}
+.detail a.media p {
+    color: #999;
+    line-height: 30px;
+}
+.detail .right .item{
+    margin-top: 10px;
+}
+.detail .right .item img{
+    width: 100%;
+}
+/*** end detail ***/

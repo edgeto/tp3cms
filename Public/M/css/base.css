@@ -1,0 +1,167 @@
+@charset "utf-8";
+*{
+    font-family: "微软雅黑", Helvetica, Aria, sans-serif !important;
+}
+.carousel img{
+    /*max-height: 8rem;*/
+}
+/*** 分类 ***/
+.category{
+    // margin-bottom: 1rem;
+}
+/*** start 2016/07/12 11：00 ***/
+.category .row .col a h2{
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 0.9rem;
+    border-radius: 1rem;
+    color: #fff;
+    // margin-bottom: 0.5rem;
+}
+.bg_greenblue {
+    background: #1dbd9c;
+}
+.bg_pink {
+    background: #ff8587;
+}
+.bg_green{
+    background: #a4ca59;
+}
+.bg_orange {
+    background: #fca533;
+}
+.bg_red {
+    background: #ff5f5a;
+}
+.bg_blue {
+    background: #52b6e8;
+}
+.bg_purple {
+    background: #e062a0;
+}
+.bg_grayc{
+    background: #ccc;
+}
+h2.title{
+    background: #f2f2f2;
+    font-size: 1.0rem;
+    min-height: 2.6rem;
+    line-height: 2.6rem;
+    border-left: 0.4rem solid #1dbd9c;
+    padding-left: 0.4rem;
+    color: #1dbd9c;
+}
+/*** end 2016/07/12 11：00 ***/
+/*.category .icon:before{
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 2.8rem;
+    border-radius: 1rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.bg_greenblue:before {
+    background: #1dbd9c;
+}
+.bg_pink:before {
+    background: #ff8587;
+}
+.bg_green:before{
+    background: #a4ca59;
+}
+.bg_orange:before {
+    background: #fca533;
+}
+.bg_red:before {
+    background: #ff5f5a;
+}
+.bg_blue:before {
+    background: #52b6e8;
+}
+.bg_purple:before {
+    background: #e062a0;
+}
+.bg_grayc:before{
+    background: #ccc;
+}*/
+.home a.item,.lists a.item{
+    border: 0;
+    padding: 0 0.6rem;
+}
+.container.article a img{
+    height: 4rem;
+}
+.container h5{
+    padding-left:0.5rem;
+    margin: 0;
+}
+.container a{
+    text-decoration: none;
+}
+.ion-content{
+    /*background-color: rgba(102, 102, 102, 0.17);*/
+    background-color: #ffffff;
+}
+.ion-content .card{
+    margin: 0;
+}
+.ion-content .list .item p{
+    white-space:normal;
+}
+.content video{
+    width: 100%;
+}
+/*** 列表 ***/
+.lists{
+    /*padding-top: 0.5rem;*/
+}
+/*** me ***/
+/*.me h2{
+    padding-top: 0.5rem;
+}*/
+.me i{
+    color: rgb(210, 214, 218);
+}
+.me .list .item-avatar>img:first-child{
+    left: 0.35rem;
+}
+.ion-content .list .item-body img{
+    width: 100%;
+}
+/** android 上拉菜单问题 **/
+.platform-android .action-sheet-cancel{
+    display:block!important;
+    margin-top:4px;
+}
+.platform-android .action-sheet .button{
+    border-width:1px 0px 0px 0px !important;
+    border-style:solid;
+    border-color:#DEDEDE;
+    text-align:center;
+    color: #007aff;
+}
+.platform-android .action-sheet .action-sheet-title{
+    text-align: center;
+}
+/** 点赞查看次数 **/
+p.p-res{
+    font-size: 1.4rem;
+}p.p-res a{
+    font-size: 1.4rem !important;
+}
+/** item 样改写 **/
+.item.item-thumbnail-left{
+    padding-top: 1.4rem;
+}
+.item.item-thumbnail-left img{
+    border-radius: 15%;
+}
+.item.item-thumbnail-left:first-child{
+    border-top: 0;
+}
+/** statement 声明 **/
+.statement{
+    padding: 1rem;
+}

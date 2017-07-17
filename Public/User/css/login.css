@@ -1,0 +1,167 @@
+*{
+    font-family: "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+a{
+    color: #000;
+}
+a:hover{
+    text-decoration: none;
+}
+/*** start header ***/
+.toolbar-bg{
+    background-color: #f0f0f0;
+}
+a.collect{
+    float: left;
+    color: #e2990c;
+    font-size: 14px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 20px;
+}
+a.webtips{
+    color: #000;
+}
+a.weblogin{
+    color: #ef3e36;
+}
+.toolbar .navbar{
+    min-height: 30px;
+    font-size: 13px;
+    margin: 0;
+}
+.toolbar .navbar-brand{
+    height: 30px;
+    line-height: 5px;
+}
+.toolbar .navbar li a{
+    line-height: 5px;
+}
+.toolbar .navbar .navbar-right li a{
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.logo{
+    margin: 10px auto;
+}
+.main-nav{
+    background-color: #333;
+}
+.main-nav .nav li a{
+    color: #ffffff;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+.main-nav .nav li a:hover,.main-nav .nav li a:focus{
+    color: #ef3e36;
+    background-color: transparent;
+    border-top: 2px solid #ef3e36;
+}
+.main-nav .main-search{
+    color: #000;
+    font-size: 14px;
+}
+/*** end header ***/
+/*** start main ***/
+/*.main img{
+    width: 100%;
+    height: 100%;
+}*/
+.main{
+    position: relative;
+    margin-top: 20px;
+    height: 480px;
+    background: no-repeat center center url(../img/login-bg.jpg);
+}
+.main .main-box{
+    padding: 80px 40px;
+}
+.main .login{
+    background: #fff;
+    padding: 10px;
+    width: 400px;
+    /*position: absolute;
+    right: 10%;
+    top: 80px;*/
+    float: right;
+}
+.main-box .login .to-register,.main-box .login .forget,.main-box .login .to-login{
+    color: #ce0100;
+}
+.main .login .p{
+    padding: 0 10px;
+}
+.main-box .login-box{
+    padding: 10px;
+    position: relative;
+    color: #6a6a6a;
+}
+.main-box .login-box .ico{
+    position: absolute;
+    top: 21px;
+    left: 16px;
+    color: #999999;
+}
+.main-box .login-box .text{
+    text-indent: 10px;
+    height: 40px;
+    line-height: 40px;
+}
+.t3{
+    color: #6a6a6a;
+    font-weight:normal;
+}
+.main-box .login .c3 a{
+    color: #005aa0;
+    padding-left: 19px;
+    white-space: nowrap;
+    line-height: 22px;
+    background: url('../img/login.gif') no-repeat top left;
+}
+.main-box .login .c3 span{
+    margin: 0 5px;
+    color: #6a6a6a;
+}
+.main-box .login .c3 a.qq{
+    background-position:0 -262px;
+}
+.main-box .login .c3 a.sina{
+    background-position:0 -395px;
+}
+.main-box .login .c3 a.weixin{
+    background-position:0 -461px;
+}
+/*** end main ***/
+/*** start footer ***/
+footer a{
+    color: #fff;
+    font-size: 16px;
+}
+footer a:hover{
+    text-decoration: none;
+    color: #ef3e36;
+}
+.footer_top_bg{
+    margin-top: 20px;
+    background-color: #2A2A2A;
+    color: #fff;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+footer .about a{
+    padding:0 15px;
+    min-height: 50px;
+    line-height: 50px;
+}
+.friends a{
+    font-size: 14px;
+}
+.foot-bottom{
+    background: url("../img/footer-background.png");
+    min-height: 100px;
+    padding: 15px;
+}
+.copyright{
+    padding-top: 20px;
+}
